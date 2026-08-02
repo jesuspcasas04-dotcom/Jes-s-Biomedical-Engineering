@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Portal del Investigador - LUAR</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .seccion { display: none; }
+      .activa { display: block; }
+      .grafica-container { background: white; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; margin-top: 20px;}
+    </style>
+  </head>
+  <body>
+
+<div id="seccion-listado" class="seccion activa">
+    <div class="main-container">
+        <h1 class="titulo-app">PORTAL DEL INVESTIGADOR - ISLIA</h1>
+        <hr class="separador">
+        <p class="label-instruccion">SELECCIONE UN PACIENTE PARA VER SU EVOLUCIÓN CLÍNICA:</p>
+
+        <div class="tabla-container">
+            <table id="tabla-pacientes-estudiador">
+                <thead>
+                    <tr>
+                        <th>ID / NOMBRE</th>
+                        <th>FECHA INGRESO</th>
+                        <th>CONSULTAR DATOS</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-estudiador">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="seccion-dashboard" class="seccion">
+    <div class="main-container" style="max-width: 1000px; width: 95%;">
+        <h1 class="titulo-app">EVOLUCIÓN CLÍNICA DEL PACIENTE</h1>
+        <hr class="separador">
+        
+        <h2 id="nombre-paciente-dashboard" style="color:#2c3e50; text-align:left;">Paciente: --</h2>
+
+        <div class="grafica-container" id="panel-sesiones">
+         <h3>Seleccione una sesión para ver detalles:</h3>
+         <div id="selector-sesiones-grid" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        </div>
+        <div id="detalle-sesion-tabla" style="margin-top: 20px;">
+        </div>
+</div>
+
+
+        <div class="grafica-container">
+            <h3>Evolución: VAS Salud (0 - 100)</h3>
+            <canvas id="chartVasSalud"></canvas>
+        </div>
+
+        <div class="grafica-container">
+            <h3>Evolución: VAS Ansiedad (Pregunta 1: 0 - 10)</h3>
+            <canvas id="chartVasAnsiedad"></canvas>
+        </div>
+
+        <div class="grafica-container">
+            <h3>Evolución: VAS Estado de Ánimo (0 - 10)</h3>
+            <canvas id="chartVasAnimo"></canvas>
+        </div>
+
+        <div class="grafica-container">
+            <h3>Evolución: STAI-6 (Puntuación Total Sumada)</h3>
+            <canvas id="chartStai6"></canvas>
+        </div>
+
+        <div class="grafica-container">
+            <h3>Evolución: VAS Dolor (0 - 10)</h3>
+            <canvas id="chartVasDolor"></canvas>
+        </div>
+
+        <div class="grafica-container">
+            <h3>Evolución: Richards-Campbell (Puntuación Total Sumada)</h3>
+            <canvas id="chartRichards"></canvas>
+        </div>
+
+        <div class="grafica-container">
+            <h3>Evolución: Errores Auditivos CAM-ICU (0 - 10)</h3>
+            <canvas id="chartCamIcu"></canvas>
+        </div>
+
+        <button class="btn-volver" style="margin-top: 30px;" onclick="volverAlListado()">← Volver al Listado de Pacientes</button>
+    </div>
+</div>
+
+    <script src="mainEstudio.js"></script>
+  </body>
+</html>

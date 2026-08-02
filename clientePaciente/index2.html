@@ -1,0 +1,825 @@
+   <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Proyecto TFG Jesús Patiño Casas</title>
+    <style>
+      .seccion { display: none; }
+      .activa { display: block; }
+    </style>  
+  </head>
+  <body>
+
+ <div id="inicio" class="seccion activa"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+          
+         <div class="cards-row"> 
+             <div class="card-btn" onclick="cambiarSeccion('registroPaciente')"> 
+                 <div class="card-content"> 
+                     <span class="card-icon">👤+</span> 
+                     <h2>INICIAR PACIENTE</h2> 
+                 </div> 
+             </div> 
+
+             <div class="card-btn" onclick="cargarListaPacientes()"> 
+                 <div class="card-content"> 
+                     <span class="card-icon">🔄</span> 
+                     <h2>CONTINUAR PACIENTE</h2> 
+                 </div> 
+             </div> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="registroPaciente" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+          
+         <div class="formulario-registro"> 
+             <label for="id-paciente-input" class="label-instruccion"> 
+                 INGRESA NOMBRE O ID DE PACIENTE NUEVO: 
+             </label> 
+              
+             <input type="text" id="id-paciente-input" class="input-moderno" placeholder="Ej: PAC-001 o Juan Pérez"> 
+              
+             <div class="container-boton-derecha"> 
+                 <button class="btn-continuar" onclick="guardarNuevoPaciente()"> 
+                     CONTINUAR 
+                 </button> 
+             </div> 
+         </div> 
+
+         <button class="btn-volver" onclick="cambiarSeccion('inicio')">← Volver</button> 
+     </div> 
+ </div> 
+
+ <div id="accesoPaciente" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+          
+         <p class="label-instruccion"> 
+             SELECCIONA EL PACIENTE CON EL QUE DESEA CONTINUAR: 
+         </p> 
+
+         <div class="tabla-container"> 
+             <table id="tabla-pacientes-existentes"> 
+                 <thead> 
+                     <tr> 
+                         <th>ID / NOMBRE</th> 
+                         <th>ÚLTIMA FASE</th> 
+                         <th>ACCIÓN</th> 
+                     </tr> 
+                 </thead> 
+                 <tbody id="cuerpo-tabla-pacientes"> 
+                     </tbody> 
+             </table> 
+         </div> 
+
+         <button class="btn-volver" onclick="cambiarSeccion('inicio')">← Volver al inicio</button> 
+     </div> 
+ </div> 
+
+ <div id="paciente" class="seccion"> 
+    <div class="main-container"> 
+        <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+        <hr class="separador"> 
+        
+        <p class="label-instruccion">¿QUÉ TIPO DE EVALUACIÓN DESEA REALIZAR?</p>
+
+        <div class="cards-row"> 
+            <div class="card-btn" onclick="cambiarSeccion('CuestionariosPrimeros')"> 
+                <div class="card-content"> 
+                    <span class="card-icon">📋</span>
+                    <h2>EVALUACIÓN INICIAL / REEVALUACIÓN</h2>
+                    <p>Valoración profunda (STAI, Dolor, Sueño, Atención)</p>
+                </div> 
+            </div> 
+
+            <div class="card-btn" onclick="cambiarSeccion('CuestionariosAntesYDespues')"> 
+                <div class="card-content"> 
+                    <span class="card-icon">⏱️</span>
+                    <h2>MONITOREO PRE / POST SESIÓN</h2> 
+                    <p>Control rápido (Salud, Ánimo, Ansiedad, Constantes)</p>
+                </div> 
+            </div> 
+
+            <div class="card-btn" onclick="cambiarSeccion('CuestionariosUltima')"> 
+                <div class="card-content"> 
+                    <span class="card-icon">🏁</span>
+                    <h2>FIN DE TRATAMIENTO</h2> 
+                    <p>Evaluación de satisfacción final del usuario (USEQ)</p>
+                </div> 
+            </div> 
+        </div>  
+        
+        <button class="btn-volver" onclick="cambiarSeccion('inicio')">← Volver al inicio</button> 
+    </div> 
+</div>
+
+ <div id="CuestionariosPrimeros" class="seccion"> 
+    <div class="main-container"> 
+        <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+        <hr class="separador"> 
+        
+        <p class="label-instruccion">SELECCIONE EL CUESTIONARIO A REALIZAR:</p> 
+
+        <div class="grid-cuestionarios"> 
+            
+            <div class="card-cuestionario" onclick="prepararCuestionario('CuestionarioSTAI6')"> 
+                <h3>STAI 6</h3> 
+                <p>Ansiedad Estado-Rasgo</p> 
+            </div> 
+
+            <div class="card-cuestionario pre-post" onclick="prepararCuestionario('CuestionarioVASDolor')"> 
+                <div class="badge-tipo">VAS</div> 
+                <h3>VAS DOLOR</h3> 
+                <p>Escala analógica de dolor</p> 
+            </div> 
+
+            <div class="card-cuestionario" onclick="prepararCuestionario('CuestionarioRichardsCampbell')"> 
+                <h3>RICHARD-CAMPBELL</h3> 
+                <p>Calidad del sueño</p> 
+            </div> 
+
+            <div class="card-cuestionario" onclick="resetearEstadoASE(); prepararCuestionario('ASE_CAM_ICU')"> 
+                <h3>ASE DEL CAM-ICU</h3> 
+                <p>Evaluación de la atención</p> 
+            </div> 
+        </div> 
+
+        <button class="btn-volver" onclick="cambiarSeccion('paciente')">← Volver al menú del paciente</button> 
+    </div> 
+</div>
+
+ <div id="CuestionariosAntesYDespues" class="seccion"> 
+    <div class="main-container"> 
+        <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+        <hr class="separador"> 
+        
+        <p class="label-instruccion">CUESTIONARIOS PRE/POST SESIÓN:</p> 
+        <p class="sub-label">Seleccione la escala para registrar los valores actuales</p> 
+
+        <div class="grid-cuestionarios"> 
+
+            <div class="card-cuestionario pre-post" onclick="prepararCuestionario('CuestionarioVASSalud')">
+                <div class="badge-tipo">VAS</div> 
+                <h3>SALUD</h3> 
+                <p>Valoración de salud actual</p> 
+            </div> 
+
+            <div class="card-cuestionario pre-post" onclick="prepararCuestionario('CuestionarioVASAnsiedad')">
+                <div class="badge-tipo">VAS</div> 
+                <h3>ANSIEDAD</h3> 
+                <p>Nivel de ansiedad puntual</p> 
+            </div> 
+
+            <div class="card-cuestionario pre-post" onclick="prepararCuestionario('CuestionarioVASAnimo')">
+                <div class="badge-tipo">VAS</div> 
+                <h3>ESTADO DE ÁNIMO</h3> 
+                <p>Humor y bienestar</p> 
+            </div> 
+
+            <div class="card-cuestionario pre-post" onclick="prepararCuestionario('TensionFrc')">
+                <div class="badge-tipo">FRC</div> 
+                <h3>CONSTANTES VITALES</h3> 
+                <p>Frecuencia cardiaca y tensión arterial</p> 
+            </div> 
+        </div> 
+
+        <button class="btn-volver" onclick="cambiarSeccion('paciente')">← Volver al menú del paciente</button> 
+    </div> 
+</div>
+
+ <div id="SeleccionFase" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+          
+         <div class="fase-config-container"> 
+             <div class="bloque-seleccion"> 
+                 <h3>1. MOMENTO DE LA MEDICIÓN</h3> 
+                 <div class="selector-dual"> 
+
+                     <button class="btn-fase" id="btn-antes" 
+onclick="setMomento('Antes')">ANTES DE LA SESIÓN</button> 
+
+                     <button class="btn-fase" id="btn-despues" 
+onclick="setMomento('Después')">DESPUÉS DE LA SESIÓN</button> 
+                 </div> 
+             </div> 
+
+             <div class="bloque-seleccion"> 
+                 <h3>2. NÚMERO DE SESIÓN / REEVALUACIÓN</h3> 
+                 <div class="grid-sesiones"> 
+                     <div class="btn-numero" onclick="setSesion('1')">1º</div> 
+                     <div class="btn-numero" onclick="setSesion('2')">2º</div> 
+                     <div class="btn-numero" onclick="setSesion('3')">3º</div> 
+                     <div class="btn-numero" onclick="setSesion('4')">4º</div> 
+                     <div class="btn-numero" onclick="setSesion('5')">5º</div> 
+                     <div class="btn-numero" onclick="setSesion('6')">6º</div> 
+                     <div class="btn-numero" onclick="setSesion('7')">7º</div> 
+                     <div class="btn-numero especial" onclick="setSesion('Reev')">REEV.</div> 
+                 </div> 
+             </div> 
+         </div> 
+
+         <div class="container-boton-derecha"> 
+             <button class="btn-continuar" onclick="confirmarFaseYEmpezar()"> 
+                 EMPEZAR CUESTIONARIO → 
+             </button> 
+         </div> 
+
+         <button class="btn-volver" onclick="cambiarSeccion('CuestionariosAntesYDespues')">← Cancelar</button> 
+     </div> 
+ </div> 
+
+ <div id="CuestionarioVASSalud" class="seccion"> 
+     <div class="main-container container-euroqol"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+
+         <div class="euroqol-layout-mixto"> 
+              
+             <div class="guia-visual"> 
+                 <div class="euroqol-texto"> 
+                     <h2>TERMÓMETRO DE AUTOVALORACIÓN</h2> 
+                     <p>Muestre esta escala al paciente para que identifique su estado de salud hoy.</p> 
+                 </div> 
+
+                 <div class="termometro-estetico"> 
+                     <span class="ref-text">Mejor salud imaginable</span> 
+                     <div class="escala-grafica"> 
+                         <div class="marca-100">100</div> 
+                         <div class="linea-termometro"></div> 
+                         <div class="marca-0">0</div> 
+                     </div> 
+                     <span class="ref-text">Peor salud imaginable</span> 
+                 </div> 
+             </div> 
+
+             <div class="formulario-datos"> 
+                 <div class="card-registro"> 
+                     <h3>REGISTRO DE PUNTUACIÓN</h3> 
+
+                     <p class="instruccion-input">Introduzca el valor numérico indicado por el paciente (0-100):</p> 
+                      
+                     <div class="input-container-grande"> 
+                         <input type="number" id="valor-vas-salud" min="0" max="100" placeholder="0-100"> 
+                         <span class="unidad">puntos</span> 
+                     </div> 
+
+                     <div class="ayuda-memoria"> 
+
+                         <p><strong>0</strong> = Peor estado | <strong>100</strong> = Mejor estado</p> 
+                     </div> 
+
+                     <button class="btn-guardar-v2" onclick="procesarGuardadoVAS()"> 
+                         CONFIRMAR Y GUARDAR 
+                     </button> 
+                 </div> 
+
+
+                 <button class="btn-volver" 
+onclick="cambiarSeccion('CuestionariosPrimeros')">← Cancelar y 
+Volver</button> 
+             </div> 
+
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="CuestionarioVASAnsiedad" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+
+         <div class="instrucciones-cabecera"> 
+             <h2>VAS-ANSIEDAD</h2> 
+
+             <p>Las siguientes preguntas indagan sobre la manera 
+cómo usted se siente normalmente y cómo se siente ahora mismo.</p>
+ 
+         </div> 
+
+         <div class="bloque-pregunta"> 
+
+             <p class="enunciado">1- Por favor encierre el número 
+que mejor describa qué tan ansioso(a) o nervioso(a) se siente usted 
+ahora:</p> 
+              
+             <div class="escala-numerica-botones"> 
+                 <div class="contenedor-botones"> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(0, this)">0</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(1, this)">1</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(2, this)">2</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(3, this)">3</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(4, this)">4</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(5, this)">5</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(6, this)">6</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(7, this)">7</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(8, this)">8</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(9, this)">9</button> 
+                     <button class="btn-num" onclick="seleccionarNumAnsiedad(10, this)">10</button> 
+                 </div> 
+                 <div class="etiquetas-escala"> 
+                     <span>Nada</span> 
+                     <span>Un poco</span> 
+                     <span>Moderadamente</span> 
+                     <span>Mucho</span> 
+                     <span>Peor de lo imaginable</span> 
+                 </div> 
+             </div> 
+         </div> 
+
+         <div class="bloque-pregunta"> 
+
+             <p class="enunciado">2-Por favor marque en la línea 
+la mejor opción que describa qué tan ansioso o temeroso(a) se siente en 
+este momento:</p> 
+              
+             <div class="escala-lineal-container"> 
+                 <div class="marcas-linea"> 
+                     <span class="inicio">Sin miedo o ansiedad</span> 
+                     <span class="fin">La peor ansiedad o miedo</span> 
+                 </div> 
+
+                 <input type="range" id="input-lineal-ansiedad" 
+min="0" max="100" value="50" class="slider-horizontal" 
+oninput="document.getElementById('val-ansiedad-2').innerText = 
+this.value"> 
+
+                 <div class="valor-lineal-display">Valor 
+registrado: <span 
+id="val-ansiedad-2">50</span>/100</div> 
+             </div> 
+         </div> 
+
+         <div class="footer-controles"> 
+             <button class="btn-guardar-v2" onclick="guardarAnsiedad()">GUARDAR ANSIEDAD</button> 
+             <button class="btn-volver" onclick="cambiarSeccion('CuestionariosPrimeros')">← Volver al menú</button> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="CuestionarioVASAnimo" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+
+         <div class="instrucciones-cabecera"> 
+             <h2>VAS - ESTADO DE ÁNIMO</h2> 
+             <p class="pregunta-animo"> 
+
+                 "En una escala de 0 a 10, donde 0 es el peor estado de 
+ánimo posible y 10 el mejor, ¿Cómo se encuentra ahora mismo?" 
+             </p> 
+         </div> 
+
+         <div class="bloque-pregunta"> 
+             <div class="escala-animo-container"> 
+                 <div class="marcas-linea"> 
+                     <span class="inicio">0<br><small>Peor estado posible</small></span> 
+                     <span class="fin">10<br><small>Mejor estado posible</small></span> 
+                 </div> 
+                  
+
+                 <input type="range" id="input-vas-animo" min="0" 
+max="10" value="5" step="1" class="slider-horizontal" 
+oninput="document.getElementById('val-animo-num').innerText = 
+this.value"> 
+                  
+                 <div class="valor-lineal-display"> 
+                     Estado de ánimo: <span id="val-animo-num">5</span> / 10 
+                 </div> 
+             </div> 
+         </div> 
+
+         <div class="footer-controles"> 
+             <button class="btn-guardar-v2" onclick="guardarAnimo()">GUARDAR ESTADO DE ÁNIMO</button> 
+             <button class="btn-volver" onclick="cambiarSeccion('CuestionariosPrimeros')">← Volver al menú</button> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="CuestionarioSTAI6" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+
+         <div class="instrucciones-cabecera"> 
+             <h2>STAI-6 (AUTOEVALUACIÓN)</h2> 
+             <p class="instrucciones-texto"> 
+                 Lea cada frase y señale la puntuación de 1 a 4 que indique mejor cómo se  
+                 <strong>SIENTE Vd. AHORA MISMO</strong>, en este momento. 
+             </p> 
+         </div> 
+
+         <div class="tabla-stai"> 
+             <div class="stai-header-row"> 
+                 <div class="stai-frase">Frase</div> 
+                 <div class="stai-opciones-labels"> 
+                     <span>Nada</span> 
+                     <span>Algo</span> 
+                     <span>Bastante</span> 
+                     <span>Mucho</span> 
+                 </div> 
+             </div> 
+
+             <div id="lista-items-stai"> 
+                 <div class="stai-item" data-pregunta="1"> 
+                     <div class="stai-texto">1. Me siento cómodo (estoy a gusto)</div> 
+                     <div class="stai-btns"> 
+                         <button class="btn-likert" onclick="marcarSTAI(1, 0, this)">1</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(1, 1, this)">2</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(1, 2, this)">3</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(1, 3, this)">4</button> 
+                     </div> 
+                 </div> 
+
+                 <div class="stai-item" data-pregunta="2"> 
+                     <div class="stai-texto">2. Me siento angustiado</div> 
+                     <div class="stai-btns"> 
+                         <button class="btn-likert" onclick="marcarSTAI(2, 0, this)">1</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(2, 1, this)">2</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(2, 2, this)">3</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(2, 3, this)">4</button> 
+                     </div> 
+                 </div> 
+
+                 <div class="stai-item" data-pregunta="3"> 
+                     <div class="stai-texto">3. Me siento confortable</div> 
+                     <div class="stai-btns"> 
+                         <button class="btn-likert" onclick="marcarSTAI(3, 0, this)">1</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(3, 1, this)">2</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(3, 2, this)">3</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(3, 3, this)">4</button> 
+                     </div> 
+                 </div> 
+
+                 <div class="stai-item" data-pregunta="4"> 
+                     <div class="stai-texto">4. Me siento nervioso</div> 
+                     <div class="stai-btns"> 
+                         <button class="btn-likert" onclick="marcarSTAI(4, 0, this)">1</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(4, 1, this)">2</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(4, 2, this)">3</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(4, 3, this)">4</button> 
+                     </div> 
+                 </div> 
+
+                 <div class="stai-item" data-pregunta="5"> 
+                     <div class="stai-texto">5. Estoy preocupado</div> 
+                     <div class="stai-btns"> 
+                         <button class="btn-likert" onclick="marcarSTAI(5, 0, this)">1</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(5, 1, this)">2</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(5, 2, this)">3</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(5, 3, this)">4</button> 
+                     </div> 
+                 </div> 
+
+                 <div class="stai-item" data-pregunta="6"> 
+                     <div class="stai-texto">6. En este momento me siento bien</div> 
+                     <div class="stai-btns"> 
+                         <button class="btn-likert" onclick="marcarSTAI(6, 0, this)">1</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(6, 1, this)">2</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(6, 2, this)">3</button> 
+                         <button class="btn-likert" onclick="marcarSTAI(6, 3, this)">4</button> 
+                     </div> 
+                 </div> 
+             </div> 
+         </div> 
+
+         <p class="nota-comprobacion">Compuebe si ha contestado a todas las frases con una sola respuesta.</p> 
+
+         <div class="footer-controles"> 
+             <button class="btn-guardar-v2" onclick="guardarSTAI6()">FINALIZAR STAI-6</button> 
+             <button class="btn-volver" onclick="cambiarSeccion('CuestionariosPrimeros')">← Volver</button> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="CuestionarioVASDolor" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+
+         <div class="dolor-layout-vertical"> 
+              
+             <div class="formulario-datos"> 
+                 <div class="card-registro"> 
+                     <h3>REGISTRO DE DOLOR</h3> 
+                     <p class="instruccion-input">El paciente puntúa su dolor del 0 al 10:</p> 
+                      
+                     <div class="input-container-grande"> 
+
+                         <input type="number" id="valor-vas-dolor" 
+min="0" max="10" step="0.1" placeholder="0-10" 
+oninput="actualizarCategorizacionDolor(this.value)"> 
+                     </div> 
+
+                     <div id="status-dolor" class="status-box">Esperando dato...</div> 
+
+                     <button class="btn-guardar-v2" onclick="guardarVASDolor()"> 
+                         GUARDAR VALOR DOLOR 
+                     </button> 
+                 </div> 
+             </div> 
+
+             <div class="guia-visual guia-visual-horizontal"> 
+                 <div class="euroqol-texto"> 
+                     <h2>EVA - ESCALA VISUAL ANALÓGICA</h2> 
+
+                     <p style="font-size: 0.85rem;">Pida al 
+paciente que marque en la línea el punto que indique la intensidad de su
+ dolor hoy.</p> 
+                 </div> 
+
+                 <div class="escala-dolor-grafica"> 
+                     <div class="burbuja-dolor">Nada<br>de dolor</div> 
+                     <div class="linea-eva"> 
+                         <div class="marca-centro"></div> 
+                     </div> 
+                     <div class="burbuja-dolor">El peor dolor<br>imaginable</div> 
+                 </div> 
+                  
+                 <div class="leyenda-severidad leyenda-larga"> 
+                     <span>Leve (0-4)</span> 
+                     <span>Modera. (5-7)</span> 
+                     <span>Severa (>7)</span> 
+                 </div> 
+             </div> 
+
+             <button class="btn-volver" onclick="cambiarSeccion('CuestionariosPrimeros')">← Cancelar</button> 
+
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="CuestionarioRichardsCampbell" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+
+         <div class="instrucciones-cabecera"> 
+             <h2>CUESTIONARIO RICHARDS-CAMPBELL</h2> 
+             <p>Valore la calidad del sueño de la pasada noche en una escala de 0 a 10.</p> 
+         </div> 
+
+         <div class="contenedor-richards"> 
+             <div class="rc-item"> 
+                 <p class="rc-pregunta">1. Su sueño la pasada noche fue:</p> 
+                 <div class="rc-visual-guide"> 
+                     <span class="rc-label">0<br>Ligero</span> 
+                     <div class="rc-regla"></div> 
+                     <span class="rc-label">10<br>Profundo</span> 
+                 </div> 
+                 <input type="number" id="rc-p1" min="0" max="10" step="0.1" class="rc-input" placeholder="0-10"> 
+             </div> 
+
+             <div class="rc-item"> 
+                 <p class="rc-pregunta">2. La noche pasada la primera vez que se durmió:</p> 
+                 <div class="rc-visual-guide"> 
+                     <span class="rc-label">0<br>No conseguía<br>quedarse dormido</span> 
+                     <div class="rc-regla"></div> 
+                     <span class="rc-label">10<br>Se durmió casi<br>de inmediato</span> 
+                 </div> 
+                 <input type="number" id="rc-p2" min="0" max="10" step="0.1" class="rc-input" placeholder="0-10"> 
+             </div> 
+
+             <div class="rc-item"> 
+                 <p class="rc-pregunta">3. La pasada noche:</p> 
+                 <div class="rc-visual-guide"> 
+                     <span class="rc-label">0<br>Estuvo casi toda<br>la noche despierto</span> 
+                     <div class="rc-regla"></div> 
+                     <span class="rc-label">10<br>Apenas se<br>despertó</span> 
+                 </div> 
+                 <input type="number" id="rc-p3" min="0" max="10" step="0.1" class="rc-input" placeholder="0-10"> 
+             </div> 
+
+             <div class="rc-item"> 
+                 <p class="rc-pregunta">4. La pasada noche cuando se despertó:</p> 
+                 <div class="rc-visual-guide"> 
+                     <span class="rc-label">0<br>No pudo volver<br>a dormirse</span> 
+                     <div class="rc-regla"></div> 
+                     <span class="rc-label">10<br>Se volvió a<br>dormir enseguida</span> 
+                 </div> 
+                 <input type="number" id="rc-p4" min="0" max="10" step="0.1" class="rc-input" placeholder="0-10"> 
+             </div> 
+
+             <div class="rc-item"> 
+                 <p class="rc-pregunta">5. La pasada noche:</p> 
+                 <div class="rc-visual-guide"> 
+                     <span class="rc-label">0<br>Ha dormido<br>mal</span> 
+                     <div class="rc-regla"></div> 
+                     <span class="rc-label">10<br>Ha dormido<br>bien</span> 
+                 </div> 
+                 <input type="number" id="rc-p5" min="0" max="10" step="0.1" class="rc-input" placeholder="0-10"> 
+             </div> 
+         </div> 
+
+         <div class="footer-controles"> 
+             <button class="btn-guardar-v2" onclick="guardarRichardsCampbell()">GUARDAR CUESTIONARIO</button> 
+             <button class="btn-volver" onclick="cambiarSeccion('CuestionariosPrimeros')">← Volver</button> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="ASE_CAM_ICU" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'ISLIA' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+
+         <div class="instrucciones-cabecera"> 
+             <h2>A. EXAMEN AUDITIVO (ASE)</h2> 
+             <p class="instrucciones-texto"> 
+
+                 <strong>Instrucciones:</strong> Dígale al 
+paciente: "Yo voy a leerle una serie de 10 letras. Cuando escuche la 
+letra 'A', indíquemelo apretando mi mano". <br> 
+                 <em>Lea a una velocidad de una letra por segundo.</em> 
+             </p> 
+         </div> 
+
+         <div class="cam-auditivo-container"> 
+
+             <p class="enunciado-fase">Pulse sobre la letra si el 
+paciente <strong>APRETÓ</strong> la mano:</p> 
+              
+             <div class="secuencia-letras"> 
+                 <button class="btn-letra" onclick="toggleLetra(0, this)">S</button> 
+                 <button class="btn-letra" onclick="toggleLetra(1, this)">A</button> 
+                 <button class="btn-letra" onclick="toggleLetra(2, this)">H</button> 
+                 <button class="btn-letra" onclick="toggleLetra(3, this)">E</button> 
+                 <button class="btn-letra" onclick="toggleLetra(4, this)">V</button> 
+                 <button class="btn-letra" onclick="toggleLetra(5, this)">A</button> 
+                 <button class="btn-letra" onclick="toggleLetra(6, this)">A</button> 
+                 <button class="btn-letra" onclick="toggleLetra(7, this)">R</button> 
+                 <button class="btn-letra" onclick="toggleLetra(8, this)">A</button> 
+                 <button class="btn-letra" onclick="toggleLetra(9, this)">T</button> 
+             </div> 
+
+             <div class="panel-resultados-cam"> 
+                 <div class="resultado-item"> 
+                     <span>ERRORES TOTALES:</span> 
+                     <strong id="contador-errores-cam">0</strong> 
+                 </div> 
+                 <p class="nota-puntaje">Se cuenta error si: No aprieta en 'A' o si aprieta en otra letra.</p> 
+             </div> 
+         </div> 
+
+         <div class="footer-controles"> 
+             <button class="btn-guardar-v2" onclick="guardarCAM_Auditivo()">GUARDAR EXAMEN AUDITIVO</button> 
+             <button class="btn-volver" onclick="cambiarSeccion('CuestionariosPrimeros')">← Volver</button> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="TensionFrc" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">CONSTANTES VITALES</h1> 
+         <hr class="separador"> 
+          
+         <div class="formulario-constantes"> 
+             <div class="input-group-v2"> 
+                 <label>Frecuencia Cardíaca (ppm):</label> 
+                 <input type="number" id="input-frc" placeholder="Ej: 80"> 
+             </div> 
+
+             <div class="input-group-v2"> 
+                 <label>Tensión Arterial Sistólica (Sist):</label> 
+                 <input type="number" id="input-tas" placeholder="Ej: 120"> 
+             </div> 
+
+             <div class="input-group-v2"> 
+                 <label>Tensión Arterial Diastólica (Diast):</label> 
+                 <input type="number" id="input-tad" placeholder="Ej: 80"> 
+             </div> 
+         </div> 
+
+         <div class="footer-controles"> 
+             <button class="btn-guardar-v2" onclick="guardarTensionFrc()">GUARDAR DATOS</button> 
+             <button class="btn-volver" onclick="cambiarSeccion('CuestionariosAntesYDespues')">← Cancelar</button> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="CuestionarioUSEQ" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">SATISFACCIÓN DEL USUARIO (USEQ)</h1> 
+         <hr class="separador"> 
+
+         <div class="useq-container"> 
+             <table class="tabla-useq"> 
+                 <thead> 
+                     <tr> 
+                         <th>Pregunta</th> 
+                         <th>1<br><small>Nada</small></th> 
+                         <th>2<br><small>Poco</small></th> 
+                         <th>3<br><small>Normal</small></th> 
+                         <th>4<br><small>Bastante</small></th> 
+                         <th>5<br><small>Mucho</small></th> 
+                     </tr> 
+                 </thead> 
+                 <tbody> 
+                     <tr> 
+                         <td>1. ¿Disfrutó de su experiencia con el sistema?</td> 
+                         <td><input type="radio" name="useq-p1" value="1"></td> 
+                         <td><input type="radio" name="useq-p1" value="2"></td> 
+                         <td><input type="radio" name="useq-p1" value="3"></td> 
+                         <td><input type="radio" name="useq-p1" value="4"></td> 
+                         <td><input type="radio" name="useq-p1" value="5"></td> 
+                     </tr> 
+                     <tr> 
+                         <td>2. ¿Tuvo éxito usando el sistema?</td> 
+                         <td><input type="radio" name="useq-p2" value="1"></td> 
+                         <td><input type="radio" name="useq-p2" value="2"></td> 
+                         <td><input type="radio" name="useq-p2" value="3"></td> 
+                         <td><input type="radio" name="useq-p2" value="4"></td> 
+                         <td><input type="radio" name="useq-p2" value="5"></td> 
+                     </tr> 
+                     <tr> 
+                         <td>3. ¿Pudo controlar el sistema?</td> 
+                         <td><input type="radio" name="useq-p3" value="1"></td> 
+                         <td><input type="radio" name="useq-p3" value="2"></td> 
+                         <td><input type="radio" name="useq-p3" value="3"></td> 
+                         <td><input type="radio" name="useq-p3" value="4"></td> 
+                         <td><input type="radio" name="useq-p3" value="5"></td> 
+                     </tr> 
+                     <tr> 
+                         <td>4. ¿La información que le proporcionó el sistema fue clara?</td> 
+                         <td><input type="radio" name="useq-p4" value="1"></td> 
+                         <td><input type="radio" name="useq-p4" value="2"></td> 
+                         <td><input type="radio" name="useq-p4" value="3"></td> 
+                         <td><input type="radio" name="useq-p4" value="4"></td> 
+                         <td><input type="radio" name="useq-p4" value="5"></td> 
+                     </tr> 
+                     <tr> 
+                         <td>5. ¿Sintió molestias durante su experiencia con el sistema?</td> 
+                         <td><input type="radio" name="useq-p5" value="1"></td> 
+                         <td><input type="radio" name="useq-p5" value="2"></td> 
+                         <td><input type="radio" name="useq-p5" value="3"></td> 
+                         <td><input type="radio" name="useq-p5" value="4"></td> 
+                         <td><input type="radio" name="useq-p5" value="5"></td> 
+                     </tr> 
+                     <tr> 
+                         <td>6. ¿Cree que este sistema le será útil para su rehabilitación?</td> 
+                         <td><input type="radio" name="useq-p6" value="1"></td> 
+                         <td><input type="radio" name="useq-p6" value="2"></td> 
+                         <td><input type="radio" name="useq-p6" value="3"></td> 
+                         <td><input type="radio" name="useq-p6" value="4"></td> 
+                         <td><input type="radio" name="useq-p6" value="5"></td> 
+                     </tr> 
+                 </tbody> 
+             </table> 
+
+             <div class="preguntas-abiertas"> 
+                 <div class="input-group-v2"> 
+                     <label>7. ¿Qué es lo que más te ha gustado de la aplicación de Realidad Virtual?</label> 
+                     <textarea id="useq-p7" rows="3" placeholder="Escriba aquí..."></textarea> 
+                 </div> 
+                 <div class="input-group-v2"> 
+                     <label>8. ¿Qué es lo que menos te ha gustado de la aplicación de Realidad Virtual?</label> 
+                     <textarea id="useq-p8" rows="3" placeholder="Escriba aquí..."></textarea> 
+                 </div> 
+             </div> 
+         </div> 
+
+         <div class="footer-controles"> 
+             <button class="btn-guardar-v2" onclick="guardarUSEQ()">GUARDAR SATISFACCIÓN</button> 
+             <button class="btn-volver" onclick="cambiarSeccion('paciente')">← Volver</button> 
+         </div> 
+     </div> 
+ </div> 
+
+ <div id="CuestionariosUltima" class="seccion"> 
+     <div class="main-container"> 
+         <h1 class="titulo-app">'LUAR' REALIDAD VIRTUAL EN UCI</h1> 
+         <hr class="separador"> 
+          
+         <p class="label-instruccion">CUESTIONARIOS FIN DE TRATAMIENTO:</p> 
+         <p class="sub-label">Evaluación tras finalizar todas las sesiones de Realidad Virtual</p> 
+
+         <div class="grid-cuestionarios"> 
+
+             <div class="card-cuestionario pre-post" 
+onclick="cuestionarioPendiente='USEQ'; 
+cambiarSeccion('CuestionarioUSEQ')"> 
+                <div class="badge-tipo">SATISFACCIÓN</div> 
+                <h3>SATISFACCIÓN (USEQ)</h3> 
+                <p>Evaluación de la experiencia VR</p> 
+             </div> 
+         </div> 
+
+         <button class="btn-volver" onclick="cambiarSeccion('paciente')">← Volver al menú del paciente</button> 
+     </div> 
+ </div> 
+
+     <link rel="stylesheet" href="style.css"> 
+     <script src="rest.js"></script> 
+     <script src="rpc.js"></script> 
+     <script src="mainPaciente.js"></script> 
+   </body> 
+ </html> 
