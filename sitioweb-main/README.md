@@ -1,2 +1,2 @@
 # sitioweb
-pagina web
+pagina web Mediccionary desarrollado durante la carrera, web Accesible y Usable.
