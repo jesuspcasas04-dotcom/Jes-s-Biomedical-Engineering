@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Main-Class: pa.Demo
+Class-Path: .
+Created-By: Maven Integration for Eclipse
+
