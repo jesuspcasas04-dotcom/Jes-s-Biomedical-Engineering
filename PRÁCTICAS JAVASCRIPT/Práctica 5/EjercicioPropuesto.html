@@ -1,0 +1,56 @@
+<!Doctype html>
+<html lang="en">
+<head>
+
+     <title>Ejercicio con valor DNI par, tensiómetro</title>
+
+</head>
+
+<body>
+
+<fieldset>
+    <legend>Formulario de registro</legend>
+    Introduzca su nombre: <input type="text" id="nombre"/><br/><br/>
+    Introduzca sus apellidos: <input type="text" id="apellidos"/><br/><br/>
+    Introduzca su fecha de nacimiento: <input type="date" id="fecha nacimiento"/><br/><br/>
+    Introduzca su peso: <input type="number" id="peso"/><br/><br/>
+    Introduzca su altura (En centímetros): <input type="number" id="altura"/><br/><br/>
+    Introduzca su presión sistólica: <input type="number" id="presion_sistolica"/><br/><br/>
+    Introduzca su presión diastólica: <input type="number" id="presion_diastolica"/><br/><br/>
+
+    <button  id="boton_diagnostico"  value="Calcular"  onclick=diagnostico()>Diagnóstico</button>
+
+    <br/><br/><br/>
+    <textarea id="area_texto"></textarea>
+    
+</fieldset>
+<script>
+    function diagnostico(){
+
+        var ps=document.getElementById("presion_sistolica").value;
+        var pd=document.getElementById("presion_diastolica").value;
+        var text_area= document.getElementById("area_texto");
+        
+
+        var resultado_diagnostico= document.getElementById("diag");
+        resultado_diagnostico.innerHTML="";
+
+        if (parseInt(ps)<=90 && parseInt(pd)<=60){
+           
+           text_area.value( "Hipotensión. Su tensión es más baja de lo recomendado.");
+
+          
+
+        }
+
+    }
+    
+</script>
+
+
+
+
+
+
+</body>
+</html>

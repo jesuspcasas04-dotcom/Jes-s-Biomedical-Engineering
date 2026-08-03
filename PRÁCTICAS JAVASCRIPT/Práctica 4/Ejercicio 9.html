@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ejercicio 9 Infraestructura de sistemas clínicos. Jesús Patiño Casas</title>
+</head>
+<body>
+    <script>
+        /*
+          Ejercicio 9.
+          Crear un programa que sirva para convertir grados Celsius a grados Fahrenheit y viceversa. En primer
+          lugar, mediante un cuadro de diálogo, se pedirá al usuario que indique el tipo de conversión (Opción 1.
+          Celsius a Fahrenheit; Opción 2. Fahrenheit a Celsius). A continuación, se le pedirá al usuario que
+          introduzca el valor en grados Celsius o Fahrenheit (dependiendo de la opción escogida) y se mostrará
+          mediante un cuadro de alerta el resultado de la conversión. Se debe utilizar funciones.
+        */
+
+        function celsius_a_far(cel){
+            var far= (cel*(9/5))+32;
+            alert(cel+ " grados celsius equivalen a " +far+ " grados fahrenheit");
+            
+
+        }
+
+        function far_a_cel(far){
+
+            var cel=(far-32)*(5/9);
+            alert(far + " grados fahrenheit equivalen a " + cel + " grados celsius");
+
+            
+
+        }
+        function conversion(){
+
+            var opción=parseInt(prompt("Seleccione que opción prefiere, 1(Celsius a fahrenheit) o 2(fahrenheit a celsius): "));
+
+            if(opción==1){
+
+                var celsius=parseFloat(prompt("Seleccione los grados celsius que quieres convertir: "));
+
+                celsius_a_far(celsius);
+                
+
+
+            }
+            else if(opción==2){
+                var fahrenheit=parseFloat(prompt("Seleccione los grados fahrenheit que quieres convertir: "));
+                far_a_cel(fahrenheit);
+            }
+            else{
+                alert("La opción seleccionada no es válida, debes seleccionar o 1 o 2.");
+            }
+        }
+
+        conversion();
+
+       
+
+
+
+      
+        
+    </script>
+</body>

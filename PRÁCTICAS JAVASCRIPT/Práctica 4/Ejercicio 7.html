@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ejercicio 7 Infraestructura de sistemas clínicos. Jesús Patiño Casas</title>
+</head>
+<body>
+    <script>
+        /*
+          Ejercicio 7. Crear un programa que pida al usuario que introduzca por pantalla mediante un cuadro de
+          diálogo los valores de 2 vectores de 3 componentes cada uno y muestre también por pantalla el producto
+          escalar de ambos. Ejemplo:
+          VectorX[0]=?? VectorX[1]=?? VectorX[2]=??
+          VectorY[0]=?? VectorY[1]=?? VectorY[2]=??
+        */
+
+       function productoEscalar(){
+           let Vector1_x= parseFloat(prompt("Vector1[x]= "));
+           let Vector1_y=parseFloat(prompt("Vector1[y]= "));
+           let Vector1_z=parseFloat(prompt("Vector1[z]= "));
+
+
+           let Vector2_x=parseFloat(prompt("Vector2[x]= "));
+           let Vector2_y=parseFloat(prompt("Vector2[y]= "));
+           let Vector2_z=parseFloat(prompt("Vector2[z]= "));
+
+           let producto_escalar=(Vector1_x*Vector2_x)+(Vector1_y*Vector2_y)+(Vector1_z*Vector2_z);
+
+           document.write("Vector 1= (" + Vector1_x + ", " + Vector1_y + ", " + Vector1_z + ")" + "Vector 2= (" + Vector2_x + ", " + Vector2_y + ", " + Vector2_z + ")" );
+           document.write( "<br>" + "El resultado de su producto escalar es " + producto_escalar);
+       }
+       productoEscalar();
+
+        
+    </script>
+</body>

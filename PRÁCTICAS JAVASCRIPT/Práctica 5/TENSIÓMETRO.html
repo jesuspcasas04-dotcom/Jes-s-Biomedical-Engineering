@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio con valor DNI par, tensiómetro Jesús Patiño Casas</title>
+</head>
+<body>
+<form>
+<fieldset id="registro">
+    <legend>Formulario de registro</legend>
+    Introduzca su nombre: <input type="text" id="nombre" required/><br/><br/>
+    Introduzca sus apellidos: <input type="text" id="apellidos" required/><br/><br/>
+    Introduzca su fecha de nacimiento: <input type="date" id="fecha_nacimiento" required/><br/><br/>
+
+    
+    Sexo:
+    <input type="radio" id="sexo_hombre" name="sexo" value="Hombre" required> Hombre
+    <input type="radio" id="sexo_mujer" name="sexo" value="Mujer" required> Mujer
+    <br/><br/>
+
+    Introduzca su peso: <input type="number" id="peso" required/><br/><br/>
+    Introduzca su altura (En centímetros): <input type="number" id="altura" required/><br/><br/>
+    Introduzca su presión sistólica: <input type="number" id="presion_sistolica" required/><br/><br/>
+    Introduzca su presión diastólica: <input type="number" id="presion_diastolica" required/><br/><br/>
+
+    <button id="boton_diagnostico" type="button" onclick="diagnostico()">Diagnóstico</button>
+    <button type="reset">Reset</button>
+    <br/><br/>
+</fieldset>
+</form>
+
+<script type="text/javascript">
+    function diagnostico() {
+        event.preventDefault();
+
+        
+        if (document.getElementById("AreaTexto")) {
+            document.getElementById("AreaTexto").remove();
+        }
+
+        var textArea = document.createElement("textarea");
+        textArea.rows = 5;
+        textArea.cols = 80;
+        textArea.id = "AreaTexto";
+
+        
+        var ps = parseInt(document.getElementById("presion_sistolica").value);
+        var pd = parseInt(document.getElementById("presion_diastolica").value);
+        var peso = parseInt(document.getElementById("peso").value);
+        var altura = parseInt(document.getElementById("altura").value);
+        var altura_metros_cuadrados = Math.pow((altura / 100), 2);
+
+        var nodoTexto, nodoTexto2;
+
+        
+        if (ps <= 90 && pd <= 60) {
+            nodoTexto = document.createTextNode("Hipotensión. Su tensión es más baja de lo recomendado.");
+        } else if (ps >= 91 && ps <= 119 && pd >= 61 && pd <= 79) {
+            nodoTexto = document.createTextNode("Normal. Su tensión es normal.");
+        } else if (ps >= 120 && ps <= 129 && pd < 90) {
+            nodoTexto = document.createTextNode("Elevada. Su tensión es elevada.");
+        } else if (ps >= 130 && ps <= 139 && pd >= 80 && pd <= 89) {
+            nodoTexto = document.createTextNode("Hipertensión nivel 1.");
+        } else if (ps >= 140 && ps <= 180 && pd >= 90 && pd <= 120) {
+            nodoTexto = document.createTextNode("Hipertensión nivel 2.");
+        } else if (ps > 180 && pd > 120) {
+            nodoTexto = document.createTextNode("Hipertensión nivel 3.");
+        }
+
+        
+        if ((peso / altura_metros_cuadrados) > 25) {
+            nodoTexto2 = document.createTextNode(" Su IMC es superior al deseable. Padecer sobrepeso u obesidad constituye un factor de riesgo de padecer o agravar la enfermedad.");
+        } else {
+            nodoTexto2 = document.createTextNode(" IMC óptimo.");
+        }
+
+        
+        textArea.appendChild(nodoTexto);
+        textArea.appendChild(document.createElement("br"));
+        textArea.appendChild(nodoTexto2);
+
+        
+        var fieldset = document.getElementById("registro");
+        fieldset.appendChild(textArea);
+
+        
+        var lista = document.createElement("ul");
+
+        var nombre = document.getElementById("nombre").value;
+        var apellidos = document.getElementById("apellidos").value;
+        var fechaNacimiento = document.getElementById("fecha_nacimiento").value;
+        var sexo = document.querySelector('input[name="sexo"]:checked').value; 
+
+        
+        var nuevoHistorial = document.createElement("li");
+        nuevoHistorial.textContent = "Nombre: " + nombre + ", Apellidos: " + apellidos + ", Fecha de Nacimiento: " + fechaNacimiento
+            + ", Sexo: " + sexo + ", Peso: " + peso + ", Altura: " + altura + " cm, Presión Sistólica: " + ps + ", Presión Diastólica: " + pd
+            + ", Diagnóstico: " + nodoTexto.textContent + " " + nodoTexto2.textContent;
+
+        lista.appendChild(nuevoHistorial);
+        document.body.appendChild(lista);
+    }
+</script>
+
+<p id="historial">Registro</p>
+
+</body>
+</html>

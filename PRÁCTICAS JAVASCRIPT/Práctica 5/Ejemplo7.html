@@ -1,0 +1,20 @@
+<html>
+<head>
+<script type="text/javascript">
+function inicio()
+{
+  alert("Hola");
+  document.getElementById("ejemplo").innerHTML="Página cargada";
+}
+function pulsar()
+{
+  var texto = document.getElementById("ejemplo").innerHTML;
+  texto += "<br>He pulsado en el párrafo";
+  document.getElementById("ejemplo").innerHTML = texto;
+}
+</script>
+</head>
+<body onload="inicio()">
+<p id="ejemplo" onclick="pulsar()">Página de ejemplo</p>
+</body>
+</html> 

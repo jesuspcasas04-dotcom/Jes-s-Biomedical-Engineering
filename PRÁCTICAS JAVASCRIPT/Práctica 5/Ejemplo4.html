@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Ejemplo 4 - Recorrer nodos DOM</title>
+</head>
+
+<body>
+  
+    <ul id="coches">
+        <li>Ford</li>
+        <li>Maserati</li>
+        <li>Seat</li>
+ </ul>
+ 
+ <script>
+ 
+        var nodoPadre = document.getElementById("coches");
+        console.log(nodoPadre);
+        console.log(nodoPadre.childNodes[0].innerHTML);
+        console.log(nodoPadre.childNodes[1].innerHTML);
+        var segundoHijo = nodoPadre.childNodes[3];
+        console.log(nodoPadre.childNodes[3].innerHTML);
+        console.log(nodoPadre.childNodes[5].innerHTML);
+       // nodoPadre.removeChild(segundoHijo);
+        //console.log(nodoPadre.childNodes[1].innerHTML);
+        //console.log(nodoPadre.childNodes[3].innerHTML);
+ 
+ </script>
+
+</body>
+
+</html>

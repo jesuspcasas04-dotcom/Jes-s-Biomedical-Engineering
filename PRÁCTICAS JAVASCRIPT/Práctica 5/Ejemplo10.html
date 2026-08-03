@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Ejemplo 10 - Lista dinámica</title>
+</head>
+
+<script>
+
+var num=0;
+
+function aniadirElemento(){
+    var lista=document.getElementById("miLista"); //obtengo la ref a la lista
+    var item=document.createElement("li");
+    //item.innerHTML = "Nuevo item "+ num + "<button onclick='eliminar(" + num + ")'> Eliminar</button>";
+    item.innerHTML = "Nuevo item "+ num;
+    num++;
+    lista.appendChild(item);
+}
+
+function eliminar(numItem){
+    var lista=document.getElementById("miLista");
+    var items=lista.childNodes;
+    items[numItem].remove();
+}
+
+
+function insertarElemento(){
+    var lista=document.getElementById("miLista");
+    var item=document.createElement("li");
+    item.innerHTML="Nuevo item como segundo " + num++;
+    var items=lista.childNodes;
+    if(items.length<2){
+        alert("No se puede ya que no hay segundo elemento");
+    }else{
+        lista.insertBefore(item,items[1]);
+    }
+}
+
+function prefijo(){
+    var lista=document.getElementById("miLista");
+    var items=lista.childNodes;
+    var i;
+    for(i=0;i<items.length;i++){
+        items[i].innerHTML="+34 " + items[i].innerHTML;
+    }
+
+
+}
+
+</script>
+    
+
+<body>
+
+<p>Esta es mi lista:</p>
+<ul id="miLista"></ul>
+<button onclick="aniadirElemento()">Añadir elemento</button><br><br>
+<button onclick="insertarElemento()">Insertar en 2ª posición</button><br><br>
+<button onclick="prefijo()">Añadir prefijo</button>
+</body>
+
+</html>

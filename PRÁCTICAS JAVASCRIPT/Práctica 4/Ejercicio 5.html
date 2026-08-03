@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ejercicio 5 Infraestructura de sistemas clínicos. Jesús Patiño Casas</title>
+</head>
+<body>
+    <script>
+        /*
+        Ejercicio 5. Crear una función que sirva para evaluar si un número es primo o no, y en caso de serlo lo
+        muestre por la consola del navegador. Para evaluar dicha función, mostrar los números primos que hay
+        del 1 al 100.
+        */
+
+        function esPrimo(n){
+            var contador=0;
+
+            for(var i=1;i<=n;i++){
+                if(n%i==0){
+
+                    contador++;
+
+                }
+            }
+            if(contador==2){
+               console.log(n + " es primo");
+            }
+
+
+        }
+        for(var e=0;e<101;e++){
+            esPrimo(e);
+
+        }
+    </script>
+</body>

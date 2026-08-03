@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ejercicio 10 Infraestructura de sistemas clínicos. Jesús Patiño Casas </title>
+</head>
+<body>
+    <script>
+
+        /*
+        Ejercicio 10.
+         Crear un juego que consista en que el usuario deba adivinar el número “pensado por la máquina” (un
+        número del 1 al 100 generado aleatoriamente). Para ello dispondrá de 7 intentos. A través de un cuadro de
+        diálogo, en cada intento, se informa al usuario del número de intentos que le quedan y se le solicita que
+        introduzca un número. Tanto si acierta como si falla, se informa al usuario con un cuadro de alerta, y en
+        caso de fallo, si el número pensado por la máquina es mayor o menor. El programa termina cuando el
+        usuario acierta el número o agota los 7 intentos (en este caso, muestra al usuario cuál fue el número
+        generado). La lógica del programa quedará definida en la función iniciar() que se invocará al pulsar sobre
+        el botón Iniciar de la pantalla.
+        <button onclick="iniciar()">Iniciar</button>
+        
+        */
+
+        function iniciar(){
+            var número_elegido = Math.floor(Math.random()*100);
+
+            var encontrado=false;
+            var intentos=1
+            var quedan=7
+
+            while (!encontrado && intentos<=7) {
+                var num= parseInt(prompt(" Te quedan " + quedan +" intentos, Introduce el número que crees que estoy pensando"));
+
+                if(número_elegido==num){
+
+                    alert("Felicidades, el número que has introducido es el mismo que el que estoy pensando!");
+                    encontrado=true;
+                    intentos==8;
+
+                }
+                else if(número_elegido>num){
+                    alert("El número que has introducido es menor que el que estoy pensando, prueba con uno mayor");
+                    intentos++;
+                    quedan--;
+
+                }
+                else{
+                    alert("El número que has introducido es mayor que el que estoy pensando, prueba con uno menor");
+                    intentos++;
+                    quedan--;
+
+                }
+
+            }
+
+        }
+
+    </script>
+    <button onclick="iniciar()">Iniciar</button>
+</body>

@@ -1,0 +1,60 @@
+
+<html>
+<head> <meta charset="UTF-8"></head>
+<h2>Eventos</h2>
+<body onload="inicio()">
+Campo 1: <input type="text" id="campo1" value="Hola Mundo"/><br><br>
+Campo 2: <input type="text" id="campo2" ><br><br>
+Campo 3: <input type="text" id="campo3" onfocus="value=''" value="Adiós Mundo" /><br><br>
+Campo 4: <input type="text" id="campo4" onblur="value=''" value="Adiós Mundo" /><br><br>
+
+
+<button onclick="document.getElementById('campo2').value=document.getElementById('campo1').value">Copiar(click)</button>
+<button onclick="document.getElementById('campo2').value=''">Borrar</button><br><br>
+<button ondblclick="copiar()">Copiar(2click)</button><br><br>
+<button onmouseover="copiar()">Copiar(over)</button><br><br>
+<button onmouseout="copiar()">Copiar(out)</button><br><br>
+<button onmousedown="copiar()">Copiar(down)</button><br><br>
+<button onmouseup="copiar()">Copiar(up)</button><br><br>
+
+
+<p>Elige una asignatura</p>
+
+
+<select id="miEleccion" onchange="miFuncion()">
+<option value="Sistemas distribuidos">Sistemas distribuidos</option>
+<option value="Telemedicina">Telemedicina</option>
+<option value="Sistemas Clínicos">Sistemas Clínicos</option>
+</select>
+
+<p id="demo"></p>
+
+<button id="boton1">Copiar(addEvent)</button>
+
+<script type="text/javascript" charset="UTF-8">
+
+function copiar()
+{
+  document.getElementById('campo2').value=document.getElementById('campo1').value
+}
+
+var elm=document.getElementById("boton1");
+elm.addEventListener("click",copiar)
+</script>
+
+<script>
+
+function inicio(){
+  alert("Ejemplo de eventos");
+}
+
+function miFuncion(){
+  var x = document.getElementById("miEleccion").value;
+  document.getElementById("demo").innerHTML ="La asignatura seleccionada es: " + x;
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ejercicio 2 Infraestructura de sistemas clinicos. Jesús Patiño Casas</title>
+
+</head>
+
+<body>
+    <script>
+        /*
+        Ejercicio 2. Crear un programa que pida al usuario que introduzca un número por pantalla
+        indefinidamente a través de un cuadro de diálogo. El programa finaliza cuando el usuario introduce el
+        valor de 0 y entonces se muestra por pantalla la suma de todos los números introducidos.
+        parseInt(cadena);
+        */
+
+        total=0;
+        do{
+            num=prompt("Introduce un número: " );
+            numeroElegido=parseInt(num);
+            total+=numeroElegido;
+
+        }
+        while(numeroElegido!=0);
+
+        document.write("La suma de todos los número introducidos es: " + total);
+
+
+        
+    </script>
+</body>

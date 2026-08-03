@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+	<title> Ejercicio 1 Infraestructura de sistemas clinicos . Jesús Patiño Casas</title>
+</head>
+<body>
+    <script>
+	
+	   /*
+	   Ejercicio 1. Crear un programa que calcule una nota automática (entre 0 y 10, con dos decimales), y si
+       esta es mayor o igual que 5 muestre por pantalla el mensaje “Enhorabuena! Has aprobado!” y si es menor
+       “Lo siento, has suspendido”. En ambos casos se debe mostrar un segundo mensaje con la nota obtenida.
+	   */
+
+        
+		numero_obtenido=(Math.random()*10).toFixed(2);
+		if(numero_obtenido<5){
+		     
+			 document.write("Lo siento, has suspendido<br>");
+		
+		}
+		else{
+		    document.write("Enhorabuena!, has aprobado!<br>");
+		}
+		document.write("Tu nota es: " + numero_obtenido);
+
+
+
+	</script>
+</body>

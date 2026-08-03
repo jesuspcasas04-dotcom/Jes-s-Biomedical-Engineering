@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<title>Ejemplo DOM</title>
+</head>
+
+<body>
+    <h1 id="titulo">Hola soy un documento en HTML</h1>
+
+    <div id="d"><p>texto</p></div> 
+<script>
+
+
+document.write("El título de la página es: " + document.title);
+
+
+//Para acceder a una parte del DOM
+var h1=document.getElementById("titulo");
+console.log(h1);
+
+
+
+
+// Para acceder al texto
+console.log(h1.innerHTML);
+
+
+
+// Para cambiar un atributo
+h1.innerHTML="Esto es nuevo texto";
+
+
+// Para cambiar el color
+h1.style.color="red";
+
+
+var d = document.getElementById("d"); 
+console.log(d.innerHTML); //prints <p>texto</p>
+
+
+</script>
+
+</body>
+
+</html>

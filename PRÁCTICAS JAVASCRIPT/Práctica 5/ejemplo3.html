@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <title>Ejemplo 3 - Acceso a elementos DOM por etiqueta</title> 
+<style type="text/css">
+   #cuadro { width: 400px; height: 200px; border: 1px black solid; float: right; }
+   p { font-size: 1em; font-family: arial; }
+</style>
+<script type="text/javascript">
+function acceder() {
+         var texto = document.getElementById("cuadro")
+         texto.innerHTML = ""
+         
+         // Accedemos a elementos cuya etiqueta es p
+         var parrafos = document.getElementsByTagName("p")
+         for (i=0 ; i<parrafos.length ; i++ ) {
+             texto.innerHTML += parrafos[i].innerHTML + "<br/>";
+             }			 
+         }
+function borrar() {
+         var texto = document.getElementById("cuadro")
+         texto.innerHTML = ""
+         }
+</script>
+</head>
+<body>
+   <h1>Acceso a los párrafos</h1>
+   <div id="cuadro"></div>
+     <p>Este es el primer párrafo de esta página</p>
+     <p>Este es el segundo párrafo</p>
+     <p>Y este el tercero</p>
+     <p onclick="acceder()">Pulsa en este cuarto párrafo para volver 
+         a verlos todos en el recuadro de la derecha.</p>
+     <p onclick="borrar()">Y pulsa en el quinto para borrar el 
+         recuadro de la derecha.</p> 
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ejercicio 6 Infraestructura de sistemas clínicos. Jesús Patiño Casas</title>
+</head>
+<body>
+    <script>
+        /*
+          Ejercicio 6. Crear una función que calcule la potencia de un número. Para ello se solicitará al usuario que
+          introduzca por pantalla mediante un cuadro de diálogo la base y el exponente (debe ser positivo) y el
+          resultado se mostrará por la consola del navegador. En caso de que se introduzca un exponente no
+          positivo, se debe avisar mediante un cuadro de alerta de que debe introducir un valor positivo. No se
+          puede utilizar la función Pow().
+        */
+
+        function calcularPotencia(){
+           let base = parseFloat(prompt("Introduce la base: "));
+           let exponente= parseInt(prompt("Introduce el exponente"));
+           
+           if (base>0 && exponente>0){
+                let resultado=Math.pow(base,exponente);
+
+                console.log("La potencia " + base + " elevado a " + exponente + " tiene como resultado " + resultado);
+           }
+           else{
+            let resultado2="Lo siento, no has introducido un número positivo, vuelve a intentarlo";
+
+            console.log(resultado2);
+
+            
+           }
+
+
+        }
+
+        calcularPotencia();
+
+
+        
+    </script>
+</body>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Eventos en botones</title>
+
+</head>
+
+<body>
+   
+
+2ª Forma
+
+<fieldset>
+    <legend>Eventos en botones</legend>
+    Numero 1: <input type="text" id="num1"><br><br>
+    Numero 2: <input type="text" id="num2"><br><br>
+   <input type="button" id="boton" value="Calcular">
+</fieldset>
+
+<script>
+    //window.onload=function(){ //solo lo hará cuando este la pagina entera cargada
+    document.getElementById("boton").addEventListener("click",sumar); //2ª forma de hacerlo
+   // }
+    function sumar(){
+        var num1  = document.getElementById("num1").value;
+        var num2  = document.getElementById("num2").value;
+        var suma= parseInt(num1)+parseInt(num2);
+        alert("La suma es "+suma);
+    }
+</script>
+
+
+
+
+</body>
+</html>

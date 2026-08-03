@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Repaso examen prácticas Infraestructura</title>
+</head>
+
+<body>
+    <form>
+
+        <label for="Comunidad_Autónoma">Comunidad</label>
+        <select  name="comunidad" id="Comunidad_Autónoma"></select><br>
+        <label for="provincias">Provincia</label>
+        <select name="provincia" id="provincias"><option value="">Seleccione</option></select><br>
+    </form>
+
+    <script>
+
+        const comunidades=[{nombre:"Castilla La Mancha", id:1},{nombre:"Valencia", id:2},{nombre:"La rioja", id:3}];
+        const provincias=[{nombre:"Ciudad Real", idComunidad:1, id:1},{nombre:"Toledo", idComunidad:1, id:2},{nombre:"Cuenca", idComunidad:1, id:3}
+        ,{nombre:"Castellón", idComunidad:2, id:1},{nombre:"Valencia", idComunidad:2, id:2},{nombre:"Alicante", idComunidad:2, id:3},
+        {nombre:"La rioja", idComunidad:3, id:1}
+        ]
+
+        comunidades.forEach((comunidad)=>{
+            var sel=document.getElementById("Comunidad_Autónoma");
+            var option=document.createElement("option");
+            var nombreComunidad=comunidad.nombre;
+            option.value=comunidad.id;
+            option.textContent=nombreComunidad;
+            sel.appendChild(option);
+            
+
+        });
+
+        var selcom=document.getElementById("Comunidad_Autónoma");
+
+        var selprov=document.getElementById("provincias");
+        
+
+        selcom.addEventListener("change",()=>{
+            selprov.innerHTML= '';
+
+            provincias.forEach((provincia)=>{
+
+                
+
+                if (provincia.idComunidad==selcom.value){
+                    var option=document.createElement("option");
+                    option.value=provincia.id;
+                    option.textContent=provincia.nombre;
+                    selprov.appendChild(option);
+
+                }
+            });
+
+        });
+
+
+        
+    </script>
+</body>

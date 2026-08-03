@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio con valor DNI par, tensiómetro</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Formulario de registro</legend>
+        Introduzca su nombre: <input type="text" id="nombre"/><br/><br/>
+        Introduzca sus apellidos: <input type="text" id="apellidos"/><br/><br/>
+        Introduzca su fecha de nacimiento: <input type="date" id="fecha_nacimiento"/><br/><br/>
+        Introduzca su peso: <input type="number" id="peso"/><br/><br/>
+        Introduzca su altura (En centímetros): <input type="number" id="altura"/><br/><br/>
+        Introduzca su presión sistólica: <input type="number" id="presion_sistolica"/><br/><br/>
+        Introduzca su presión diastólica: <input type="number" id="presion_diastolica"/><br/><br/>
+
+        <button id="boton_diagnostico" onclick="diagnostico()">Diagnóstico</button>
+        
+        <!-- Área donde se mostrará el diagnóstico -->
+        <div id="resultado_diagnostico"></div>
+        
+    </fieldset>
+
+    <script>
+        function diagnostico() {
+            var presion_sistolica = parseInt(document.getElementById("presion_sistolica").value);
+            var presion_diastolica = parseInt(document.getElementById("presion_diastolica").value);
+
+            // Seleccionar el div donde se mostrará el diagnóstico
+            var resultado_diagnostico = document.getElementById("resultado_diagnostico");
+
+            // Limpiar el contenido anterior
+            resultado_diagnostico.innerHTML = "";
+
+            // Crear el área de texto
+            var text_area = document.createElement("textarea");
+            text_area.rows = 4;
+            text_area.cols = 50;
+
+            // Condición para diagnosticar
+            if (presion_sistolica <= 90 && presion_diastolica <= 60) {
+                text_area.value = "Hipotensión. Su tensión es más baja de lo recomendado.";
+            } else {
+                text_area.value = "Su presión está dentro del rango normal.";
+            }
+
+            // Agregar el área de texto al div de resultados
+            resultado_diagnostico.appendChild(text_area);
+        }
+    </script>
+</body>
+</html>

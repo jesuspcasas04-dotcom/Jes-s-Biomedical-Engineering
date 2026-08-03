@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo5 - Creación elementos de DOM</title>
+</head>
+<body>
+ <div id="div1">
+    <p id="p1">Este es el primer párrafo</p>
+    <p id="p2">Este es el segundo párrafo</p>
+ </div>
+ <input id="uno" type="text" />
+
+<script>
+// crear un nuevo parrafo y añadirle contenido
+var elementoP=document.createElement("p");
+var nodoTexto=document.createTextNode("Este es el tercer párrafo");
+elementoP.appendChild(nodoTexto);
+
+
+//insertarlo en otra posición
+var elemento = document.getElementById("div1");
+var child = document.getElementById("p2");
+elemento.appendChild(elementoP); // (A)
+//elemento.insertBefore(elementoP, child); // (B)
+//elementoP.remove();
+
+// Modificar atributos
+child.style.color='red';
+elementoP.style.color="green";
+document.getElementById("div1").style.backgroundColor='pink';
+
+
+
+</script>
+
+</body>
+
+</html>

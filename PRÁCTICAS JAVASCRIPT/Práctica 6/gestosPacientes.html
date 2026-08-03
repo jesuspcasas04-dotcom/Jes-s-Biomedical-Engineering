@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Ejercicio gestor pacientes, Infraestructura de sistemas clínicos, Práctica 6, Jesús Patiño Casas</title>
+    </head>
+
+    <body>
+        <style>
+            table th {
+
+                background-color:#02a9f7;   
+                border-collapse: collapse;  
+                border: 1px solid black;
+            }
+            table td {
+                border-collapse: collapse;  
+                border: 1px solid black;
+
+            }
+            table{
+                border-collapse: collapse;
+                border: 1px solid black;
+                text-align: center;
+            
+
+            }
+            tr.marked{
+
+                background-color: rgb(239, 239, 111); 
+
+            }
+        </style>
+        <table id="tablaRegistros">
+            <tr>
+                <th>Provincia</th>
+                <th>Hospital</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Eliminar</th>
+                <th>Marcar</th>
+            </tr>
+        </table>
+        <br><br><br>
+<fieldset>
+        <form>
+            <legend><b>Formulario de registro</b></legend><br/>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Inserte su nombre" required><br/>
+            <label for="telefono">Telefono:</label>
+            <input type="tel" id="telefono" placeholder="Inserte su teléfono" required/><br/>
+            <label for="provincia">Provincia:</label>
+            <select name="provincia" id="provincia" required></select><br/>
+            <label for="hospital">Hospital:</label>
+            <select name="hospital" id="hospital" required><option value="">Seleccione un hospital</option></select><br/>
+            <button id="añadir" type="button" onclick="añadirRegistro()">Añadir</button>
+        </form>
+</fieldset>
+        <script>
+            const provincias = [
+                { id: 1, nombre: "Valencia" },
+                { id: 2, nombre: "Alicante" },
+                { id: 3, nombre: "Castellón" },
+            ];
+
+            const hospitales = [
+                { id: 1, provinciaId: 1, nombre: "Hospital de Manises" },
+                { id: 2, provinciaId: 1, nombre: "Hospital Clínico Universitario de Valencia" },
+                { id: 3, provinciaId: 1, nombre: "Hospital General Universitario de Valencia" },
+                { id: 4, provinciaId: 1, nombre: "Hospital La Fe" },
+                { id: 5, provinciaId: 2, nombre: "Hospital General Universitario de Alicante" },
+                { id: 6, provinciaId: 2, nombre: "Hospital Universitario de San Juan de Alicante" },
+                { id: 7, provinciaId: 2, nombre: "Hospital Vega Baja de Orihuela" },
+                { id: 8, provinciaId: 2, nombre: "Hospital Marina Baixa de Villajoyosa" },
+                { id: 9, provinciaId: 3, nombre: "Hospital General Universitario de Castellón" },
+                { id: 10, provinciaId: 3, nombre: "Hospital de la Plana" },
+                { id: 11, provinciaId: 3, nombre: "Hospital Comarcal de Vinaròs" }
+            ];
+
+            const prov = document.getElementById("provincia");
+            const hosp = document.getElementById("hospital");
+
+            provincias.forEach((provincia) => {
+                const option = document.createElement("option");
+                option.value = provincia.id;
+                option.textContent = provincia.nombre;
+                prov.appendChild(option);
+            });
+
+            prov.addEventListener("change", () => {
+                hosp.innerHTML = '<option value="">Seleccione un hospital</option>'; // Limpiar opciones anteriores
+                hospitales.forEach((hospital) => {
+                    if (hospital.provinciaId == prov.value) {
+                        const option = document.createElement("option");
+                        option.value = hospital.id;
+                        option.textContent = hospital.nombre;
+                        hosp.appendChild(option);
+                    }
+                });
+            });
+
+            function añadirRegistro() {
+                const nombre = document.getElementById("nombre").value;
+                const telefono = document.getElementById("telefono").value; // Lo dejamos como string o lo convertimos en número si es necesario
+                const provincia = document.getElementById("provincia").value;
+                const hospital = document.getElementById("hospital").value;
+
+                const provinciaNombre=provincias.find(p => p.id==provincia)?.nombre|| "desconocido";
+                const hospitalNombre=hospitales.find(h => h.id==hospital)?.nombre|| "desconocido";
+
+
+
+
+                const tabla = document.getElementById("tablaRegistros");
+                const fila = document.createElement("tr");
+
+                const celdaProvincia = document.createElement("td");
+                const celdaHospital = document.createElement("td");
+                const celdaNombre = document.createElement("td");
+                const celdaTelefono = document.createElement("td");
+                const celdaEliminar = document.createElement("td");
+                const celdaMarcar = document.createElement("td");
+
+                celdaProvincia.textContent = provinciaNombre;
+                celdaHospital.textContent = hospitalNombre;
+                celdaNombre.textContent = nombre;
+                celdaTelefono.textContent = telefono;
+
+                const btnEliminar = document.createElement("button");
+                btnEliminar.textContent = "Eliminar";
+                btnEliminar.onclick = () => tabla.deleteRow(fila.rowIndex);
+                celdaEliminar.appendChild(btnEliminar);
+
+                const btnMarcar = document.createElement("button");
+                btnMarcar.textContent = "Marcar";
+                btnMarcar.onclick=()=>fila.classList.toggle("marked");
+                celdaMarcar.appendChild(btnMarcar);
+
+                fila.appendChild(celdaProvincia);
+                fila.appendChild(celdaHospital);
+                fila.appendChild(celdaNombre);
+                fila.appendChild(celdaTelefono);
+                fila.appendChild(celdaEliminar);
+                fila.appendChild(celdaMarcar);
+                tabla.appendChild(fila);
+            }
+        </script>
+    </body>
+</html>
