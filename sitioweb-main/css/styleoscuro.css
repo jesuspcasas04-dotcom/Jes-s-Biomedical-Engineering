@@ -1,0 +1,113 @@
+
+@import url("style.css") screen and (min-width: 0px);
+
+
+:root {
+    --color-fondo1: #1a1a1a; 
+    --color-fondo2: #2c2c2c; 
+    --color-fondo-tablas: #333333; 
+    --color-acentuados: #cfcfcf; 
+    --color-texto: #f0f0f0; 
+    --color-negro: #ffffff; 
+    --color-borde: #494949; 
+    --color-links: #8ab4f8; 
+    --fuente-principal-texto: 'Arial', sans-serif;
+}
+
+header {
+    background-color: var(--color-fondo2);
+    border-bottom: 4px solid var(--color-acentuados);
+}
+
+header h1 {
+    color: var(--color-texto);
+}
+
+header p {
+    color: var(--color-texto);
+}
+
+/* Body */
+body {
+    background-color: var(--color-fondo1);
+    color: var(--color-texto);
+}
+
+main {
+    background-color: var(--color-fondo1);
+    border-top: 4px solid var(--color-acentuados);
+}
+
+main h2, main h3, main p, main blockquote {
+    color: var(--color-acentuados);
+}
+
+/* Links */
+a {
+    color: var(--color-links);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Sección */
+section {
+    background-color: var(--color-fondo2);
+    border: 2px solid var(--color-borde);
+}
+
+section h3 {
+    color: var(--color-texto);
+}
+section a {
+    color: var(--color-links);
+
+}
+
+section p  {
+    color: var(--color-texto);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-fondo1);
+    color: var(--color-acentuados);
+}
+
+/* Tablas */
+table {
+    background-color: var(--color-fondo1);
+    color: var(--color-acentuados);
+}
+
+table th {
+    background-color: var(--color-acentuados);
+    color: var(--color-fondo1);
+}
+
+table td {
+    background-color: var(--color-fondo2);
+    color: var(--color-texto);
+}
+
+/* Formularios */
+form {
+    background-color: var(--color-fondo2);
+    color: var(--color-texto);
+}
+
+input[type="text"], input[type="email"], input[type="date"], input[type="number"], textarea {
+    background-color: var(--color-fondo1);
+    color: var(--color-negro);
+    border: 2px solid var(--color-borde);
+}
+
+input[type="submit"] {
+    background-color: var(--color-fondo1);
+    color: var(--color-acentuados);
+}
+
+.radio-group input[type="radio"], input[type="checkbox"] {
+    color: var(--color-texto);
+}

@@ -1,0 +1,152 @@
+
+@import url("style.css") screen and (min-width: 0px);
+
+
+:root {
+     --color-fondo1: #f2f2f2; 
+    --color-fondo2: #0a3d62;
+    --color-fondo-tablas: #d1d8e0; 
+    --color-acentuados: #1a1a1a;
+    --color-texto: #ffcc00; 
+    --color-negro: #ffffff; 
+    --color-borde: #ffcc00; 
+    --color-links: #0066cc; 
+    --fuente-principal-texto: 'Arial', sans-serif;
+    --tamano-texto-base: 28px; 
+}
+
+
+body {
+    background-color: var(--color-fondo1);
+    color: var(--color-texto);
+    font-family: var(--fuente-principal-texto);
+    font-size: var(--tamano-texto-base); 
+    line-height: 1.9; 
+}
+
+/* Encabezados */
+header {
+    background-color: var(--color-fondo2);
+    border-bottom: 4px solid var(--color-acentuados);
+}
+
+header h1 {
+    color: var(--color-texto);
+    font-size: 54px; 
+}
+
+header p {
+    color: var(--color-texto);
+    font-size: 30px; 
+}
+
+/* Main */
+main {
+    background-color: var(--color-fondo1);
+    border-top: 4px solid var(--color-acentuados);
+    text-align: center;
+}
+
+main h2 {
+    color: var(--color-acentuados);
+    font-size: 46px; 
+}
+
+main h3 {
+    color: var(--color-acentuados);
+    font-size: 36px; 
+}
+
+main p, main blockquote {
+    color: var(--color-acentuados);
+    font-size: 28px; 
+}
+
+aside {
+    color: var(--color-acentuados);
+}
+
+/* Links */
+a {
+    color: var(--color-links);
+    font-size: 28px; 
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Seccións */
+section {
+    background-color: var(--color-fondo2);
+    border: 2px solid var(--color-borde);
+}
+
+section h3, section a {
+    color: var(--color-texto);
+    font-size: 46px;
+}
+
+section p {
+    color: var(--color-texto);
+    font-size: 28px; 
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-fondo1);
+    color: var(--color-acentuados);
+}
+
+footer a {
+    color: var(--color-links);
+    font-size: 26px; 
+}
+
+/* Tablas */
+table {
+    background-color: var(--color-fondo1);
+    color: var(--color-texto);
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: var(--color-acentuados);
+    color: var(--color-fondo1);
+    font-size: 30px; 
+}
+
+table td {
+    background-color: var(--color-fondo-tablas);
+    color: var(--color-acentuados);
+    font-size: 28px;
+}
+
+/* Formularios */
+form {
+    background-color: var(--color-fondo2);
+    color: var(--color-fondo2);
+}
+
+input[type="text"], input[type="email"], input[type="date"], input[type="number"], textarea {
+    background-color: var(--color-fondo1);
+    color: var(--color-acentuados);
+    border: 2px solid var(--color-borde);
+    font-size: 26px; 
+}
+
+input[type="submit"] {
+    background-color: var(--color-acentuados);
+    color: var(--color-texto);
+    font-size: 28px; 
+}
+
+/* Otros elementos como radio y checkbox */
+.radio-group input[type="radio"], input[type="checkbox"] {
+    color: var(--color-acentuados);
+}
+
+.radio-group label {
+    font-size: 28px; 
+}
+

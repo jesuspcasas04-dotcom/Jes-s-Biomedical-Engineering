@@ -1,0 +1,81 @@
+
+@import url("style.css") screen and (min-width: 0px);
+
+
+:root {
+    --fuente-principal-texto: 'Arial', sans-serif;
+    --tamano-texto-base: 28px; 
+}
+
+body {
+    font-size: var(--tamano-texto-base); 
+    line-height: 1.9; 
+}
+
+/* Encabezados */
+header h1 {
+    font-size: 54px; 
+}
+
+header p {
+    font-size: 30px;
+}
+
+/* Main */
+main h2 {
+    font-size: 46px;
+}
+
+main h3 {
+    font-size: 36px; 
+}
+
+main p, main blockquote {
+    font-size: 28px; 
+}
+
+/* Links */
+a {
+    font-size: 28px; 
+}
+
+/* Secciones */
+section h3, section a{
+    font-size: 46px; 
+}
+
+section p {
+    font-size: 28px; 
+}
+
+/* Footer */
+footer a {
+    font-size: 26px; 
+}
+
+/* Tablas */
+table th {
+    font-size: 30px; 
+}
+
+table td {
+    font-size: 28px; 
+}
+
+/* Formularios */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea {
+    font-size: 26px; 
+}
+
+input[type="submit"] {
+    font-size: 28px; 
+}
+
+/* Otros elementos como radio y checkbox */
+.radio-group label {
+    font-size: 28px; 
+}

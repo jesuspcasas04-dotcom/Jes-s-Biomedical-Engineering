@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>MeDiccionary</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" title="modo normal">
+    <link rel="alternate stylesheet" href="../css/styleoscuro.css" type="text/css" media="screen" title="modo oscuro">
+    <link rel="alternate stylesheet" href="../css/stylealtocontraste.css" type="text/css" media="screen" title="modo alto contraste">
+    <link rel="alternate stylesheet" href="../css/styleletramayor.css" type="text/css" media="screen" title="modo letras grandes">
+    <link rel="alternate stylesheet" href="../css/styleletramayorycontrastealto.css" type="text/css" media="screen" title="modo letras grandes y contraste alto">
+    <link rel="stylesheet" href="../css/styleimprimir.css" media="print" title="modo impresion">
+</head>
+<body>
+    <a href="#contenido-principal" class="salto-contenido">Saltar al contenido principal</a>
+    <!-- Cabecera -->
+    <header>
+        <a href="../index.html"><img src="../Fotos/logo.png" alt="logo diccionary" width="150" height="150"></a>
+        <h1>MeDiccionary</h1>
+        <p>Diccionario médico</p>
+		
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav class="buscador">
+    
+        <a href="../index.html">Inicio</a> 
+        <a href="../Indice/indice.html">Indice</a> 
+        <a href="../Formularios/contacto.html">Contacto</a> 
+        <a href="../Formularios/buscador.html">Buscador</a> 
+        <a href="../Formularios/valoranos.html">Valoranos</a>
+        
+    </nav>
+	
+    <!-- Zona de contenido principal -->
+    <main id="contenido-principal">
+        <nav aria-label="breadcrumb">
+            <p>
+                <a href="../index.html">Inicio</a> >
+                <a href="../Formularios/buscador.html">Buscador</a> 
+            </p>
+            
+        </nav>
+        <h2>Buscador de Artículos de Enciclopedia</h2>
+        
+        <form action="submit_buscador.html" method="get">
+
+            <p class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" placeholder="Buscar por descripción...">
+            </p>
+    
+            <p class="form-group">
+                <label for="causas">Causas:</label>
+                <input type="text" id="causas" name="causas" placeholder="Buscar por causas...">
+            </p>
+    
+            <p class="form-group">
+                <label for="sintomas">Síntomas:</label>
+                <input type="text" id="sintomas" name="sintomas" placeholder="Buscar por síntomas...">
+            </p>
+    
+            <p class="form-group">
+                <label for="pruebas">Pruebas y Exámenes:</label>
+                <input type="text" id="pruebas" name="pruebas" placeholder="Buscar por pruebas y exámenes...">
+            </p>
+    
+            <p class="form-group">
+                <label for="tratamiento">Tratamiento:</label>
+                <input type="text" id="tratamiento" name="tratamiento" placeholder="Buscar por tratamiento...">
+            </p>
+    
+            <p class="form-group">
+                <label for="expectativas">Expectativas:</label>
+                <input type="text" id="expectativas" name="expectativas" placeholder="Buscar por expectativas...">
+            </p>
+
+            <input type="submit">
+        </form>
+    
+       
+    </main>
+
+    <!-- Pie de página -->
+    <footer lang="en">
+      
+        <p>©️ 2024 MeDiccionary. All rights are reserved. Jesús Patiño Casas and Joan Briz Chornet</p>
+        <aside><a href="../Declaracion_de_Accesibilidad/declaracion_accesibilidad.html">Accessibility statrment</a></aside>
+    </footer>
+</body>
+</html>

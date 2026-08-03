@@ -1,0 +1,8 @@
+@media screen and (max-width: 480px) {
+    /* Aquí van las reglas CSS que se aplicarán en pantallas de hasta 480px */
+    body {
+        background-color: #f0f0f0; /* Ejemplo de estilo específico */
+    }
+
+    /* Puedes añadir más reglas de estilo aquí */
+}

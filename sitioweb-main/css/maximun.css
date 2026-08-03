@@ -1,0 +1,8 @@
+@media screen and (min-width: 1025px) {
+    /* Aquí van las reglas CSS que se aplicarán en pantallas de 1025px o más */
+    body {
+        background-color: #e0e0e0; /* Ejemplo de estilo específico */
+    }
+
+    /* Agrega más estilos aquí que se aplicarán solo en pantallas grandes */
+}

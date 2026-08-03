@@ -1,0 +1,106 @@
+
+
+@media print {
+    /* General */
+    body {
+        font-family: 'Arial', sans-serif;
+        font-size: 12pt; 
+        color: #000; 
+        background: #fff; 
+        margin: 0;
+        padding: 1cm; 
+    }
+
+    
+    nav, footer, .buscador, .radio-group, input[type="submit"], input[type="text"], input[type="email"], input[type="date"], input[type="number"], textarea {
+        display: none; 
+    }
+
+    
+    header {
+        background: none; 
+        border: none; 
+        padding-bottom: 0.5cm; 
+    }
+
+    header h1 {
+        font-size: 18pt; 
+        color: #000; 
+    }
+
+    header p {
+        font-size: 12pt; 
+        color: #000; 
+    }
+
+    
+    main {
+        background-color: transparent; 
+        border: none; 
+        padding: 0;
+    }
+
+    main h2, main h3 {
+        color: #000; 
+    }
+
+    main p, main blockquote {
+        color: #000; 
+        font-size: 12pt; 
+    }
+
+    /* Sección */
+    section {
+        background: none; 
+        border: none; 
+    }
+
+    section h3 {
+        font-size: 14pt;
+        color: #000; 
+    }
+
+    section p {
+        font-size: 12pt;
+        color: #000; 
+    }
+
+    /* Tablas */
+    table {
+        width: 100%; 
+        border-collapse: collapse; 
+        background: none; 
+        color: #000; 
+    }
+
+    table th, table td {
+        border: 1px solid #000; 
+        padding: 0.5cm; 
+        font-size: 12pt; 
+    }
+
+    
+    a {
+        color: #000; 
+        text-decoration: underline; 
+    }
+
+    a:after {
+        content: " (" attr(href) ")"; 
+        font-size: 10pt;
+        color: #333;
+    }
+
+    
+    h1, h2, h3, p {
+        page-break-inside: avoid; 
+        margin: 0;
+        padding: 0;
+        padding-bottom: 0.5cm; 
+    }
+
+    
+    .salto-contenido {
+        display: none; 
+    }
+}

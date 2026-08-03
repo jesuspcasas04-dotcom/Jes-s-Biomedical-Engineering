@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>MeDiccionary</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" title="modo normal">
+    <link rel="alternate stylesheet" href="../css/styleoscuro.css" type="text/css" media="screen" title="modo oscuro">
+    <link rel="alternate stylesheet" href="../css/stylealtocontraste.css" type="text/css" media="screen" title="modo alto contraste">
+    <link rel="alternate stylesheet" href="../css/styleletramayor.css" type="text/css" media="screen" title="modo letras grandes">
+    <link rel="alternate stylesheet" href="../css/styleletramayorycontrastealto.css" type="text/css" media="screen" title="modo letras grandes y contraste alto">
+    <link rel="stylesheet" href="../css/styleimprimir.css" media="print" title="modo impresion">
+</head>
+<body>
+    <a href="#contenido-principal" class="salto-contenido">Saltar al contenido principal</a>
+    <!-- Cabecera -->
+    <header>
+        <a href="../index.html"><img src="../Fotos/logo.png" alt="logo diccionary" width="150" height="150"></a>
+        <h1>MeDiccionary</h1>
+        <p>Diccionario médico</p>
+		
+    </header>
+	
+	<!-- Barra de navegación -->
+    <nav class="buscador">
+    
+        <a href="../index.html">Inicio</a> 
+      <a href="../Indice/indice.html">Indice</a> 
+      <a href="../Formularios/contacto.html">Contacto</a> 
+	  <a href="../Formularios/buscador.html">Buscador</a> 
+      <a href="../Formularios/valoranos.html">Valoranos</a>
+              
+          
+      </nav>
+	
+    <!-- Zona de contenido principal -->
+    <main id="contenido-principal">
+        <nav aria-label="breadcrumb">
+            <p>
+                <a href="../index.html">Inicio</a> >
+                <a href="../Formularios/contacto.html">Contacto</a> 
+            </p>
+            
+        </nav>
+      <h2>Formulario de Contacto</h2>
+      <p class="ObligatorioContacto">El asterisco (*) hace referencia a un campo obligatorio</p>
+      
+	  <form action="submit_contacto.html" method="post">
+	
+ 
+    <p class="form-group">
+        <label for="asunto">Asunto *:</label>
+        <input type="text" id="asunto" name="asunto" required placeholder="Escribe tu asunto aquí...">
+    </p>
+
+    <p class="form-group">
+        <label for="comentarios">Comentarios y Preguntas *:</label>
+        <textarea type="text" id="comentarios" name="comentarios" rows="5" cols="30" required placeholder="Escribe tus comentarios y preguntas aquí..."></textarea>
+    </p>
+
+    <p class="form-group">
+        <label for="yo_soy">Yo soy:</label>
+        <select id="yo_soy" name="yo_soy">
+            <option value="paciente">Paciente</option>
+            <option value="cientifico">Científico</option>
+            <option value="medico">Médico</option>
+            <option value="educador">Educador</option>
+            <option value="fabricante">Fabricante</option>
+            <option value="periodista">Periodista</option>
+        </select>
+    </p>
+
+    <p class="form-group">
+        <label for="fecha">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha" name="fecha">
+    </p>
+
+    <p class="form-group">
+        <label>Sexo:</label>
+        <div class="radio-group">
+            <input type="radio" id="hombre" name="sexo" value="hombre">
+            <label for="hombre">Hombre</label>
+            <input type="radio" id="mujer" name="sexo" value="mujer">
+            <label for="mujer">Mujer</label>
+            <input type="radio" id="otro" name="sexo" value="otro">
+            <label for="otro">Otro</label>
+        </div>
+    </p>
+
+    <p class="form-group">
+        <label for="correo_electronico"> <i class="fas fa-envelope"></i>Correo Electrónico:</label>
+        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="nombre@ejemplo.com">
+    </p>
+
+    <p class="form-group">
+        <div class="radio-group">
+        <input type="checkbox" id="info" name="info">
+        <label for="info">Deseo recibir más información</label>
+        </div>
+    </p>
+
+        
+		<input type="submit">
+      </form>
+	    
+        <h2>Horiarios:</h2>
+        <p>Horarios de disponibilidad de atención al cliente</p>
+        <table>
+            <tr>
+            <th>/</th>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miercoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            </tr>
+            
+            <tr>
+            <th>Mañanas</th>
+            <td>9:00-12:00</td>
+            <td>8:00-11:00</td>
+            <td>9:00-12:30</td>
+            <td>8:00-11:00</td>
+            <td>9:00-12:30</td>
+            </tr>
+            <tr>
+            <th>Tardes</th>
+            <td>-------</td>
+            <td>18:00-20:00</td>
+            <td>-------</td>
+            <td>18:00-20:00</td>
+            <td>-------</td>
+            
+            
+            </table>
+     </main>
+
+    <!-- Pie de página -->
+    <footer lang="en">
+      
+        <p>©️ 2024 MeDiccionary. All rights are reserved. Jesús Patiño Casas and Joan Briz Chornet</p>
+        <aside><a href="../Declaracion_de_Accesibilidad/declaracion_accesibilidad.html">Accessibility statrment</a></aside>
+    </footer>
+</body>
+</html>

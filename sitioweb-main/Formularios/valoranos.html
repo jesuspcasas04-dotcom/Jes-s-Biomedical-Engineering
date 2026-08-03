@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>MeDiccionary</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" title="modo normal">
+    <link rel="alternate stylesheet" href="../css/styleoscuro.css" type="text/css" media="screen" title="modo oscuro">
+    <link rel="alternate stylesheet" href="../css/stylealtocontraste.css" type="text/css" media="screen" title="modo alto contraste">
+    <link rel="alternate stylesheet" href="../css/styleletramayor.css" type="text/css" media="screen" title="modo letras grandes">
+    <link rel="alternate stylesheet" href="../css/styleletramayorycontrastealto.css" type="text/css" media="screen" title="modo letras grandes y contraste alto">
+    <link rel="stylesheet" href="../css/styleimprimir.css" media="print" title="modo impresion">
+</head>
+<body>
+    <a href="#contenido-principal" class="salto-contenido">Saltar al contenido principal</a>
+    <!-- Cabecera -->
+    <header>
+        <a href="../index.html"><img src="../Fotos/logo.png" alt="logo diccionary" width="150" height="150"></a>
+        <h1>MeDiccionary</h1>
+        <p>Diccionario médico</p>
+		
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav class="buscador">
+    
+        <a href="../index.html">Inicio</a> 
+        <a href="../Indice/indice.html">Indice</a> 
+        <a href="../Formularios/contacto.html">Contacto</a> 
+        <a href="../Formularios/buscador.html">Buscador</a> 
+        <a href="../Formularios/valoranos.html">Valoranos</a>
+            
+        
+    </nav>
+    <!-- Zona de contenido principal -->
+    <main id="contenido-principal">
+        
+        <nav aria-label="breadcrumb">
+            <p>
+                <a href="../index.html">Inicio</a> >
+                <a href="../Formularios/valoranos.html">Valoranos</a> 
+               
+            </p>
+            
+        </nav>
+        <h2>Valora tu experiencia en MeDiccionary</h2>
+        <p>todos los campos son obligatorio</p>
+        <form action="../Formularios/submit_valoranos.html" method="get">
+		<p>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+		</p>
+		<p>
+			<label for="email"><i class="fas fa-envelope"></i> Correo electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+        </p>
+		<p>
+			<label for="fecha">Fecha de tu valoración:</label>
+            <input type="date" id="fecha" name="fecha" required>
+        </p>
+		<p>
+		
+			<label for="valoracion">Valoración del sitio (1-10):</label>
+            <input type="number" id="valoracion" name="valoracion" min="1" max="10" step="1" placeholder="Introduce un número entre 1 y 10" required>
+        </p>
+		<p>
+			<label for="satisfaccion">Satisfacción general:</label>
+            <input type="range" id="satisfaccion" name="satisfaccion" min="0" max="100" step="10" >
+        </p>
+        <p>		
+			 <label for="comentarios">Comentarios adicionales:</label>
+        		<textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tus comentarios aquí..."></textarea>
+
+        </p>
+
+            <input type="submit" value="Enviar valoración">
+        </form> 
+    
+       
+    </main>
+
+    <!-- Pie de página -->
+    <footer lang="en">
+      
+        <p>©️ 2024 MeDiccionary. All rights are reserved. Jesús Patiño Casas and Joan Briz Chornet</p>
+        <aside><a href="../Declaracion_de_Accesibilidad/declaracion_accesibilidad.html">Accessibility statrment</a></aside>
+    </footer>
+</body>
+</html>

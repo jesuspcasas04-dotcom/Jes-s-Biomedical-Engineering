@@ -1,0 +1,333 @@
+@import url("minimum.css") screen and (max-width: 480px);
+@import url("medium.css") screen and (min-width: 481px) and (max-width: 1024px);
+@import url("maximum.css") screen and (min-width: 1025px);
+/*Root es como una pseudo clase donde vamos a definir nuestras variables, por ejemplo, en mi caso voy a definir principalmente lo colores*/
+
+:root {
+    --color-fondo1: #ede7dd; 
+    --color-fondo2: #09448b;  
+    --color-fondo-tablas: #c7c2bb;
+    --color-acentuados: #031d3c; 
+    --color-texto:  #ede7dd; 
+    --color-negro: #1a1a1a; 
+    --color-borde: #031d3c;
+    --fuente-principal-texto: 'Arial',sans-serif;
+    --color-links:#
+}
+
+/*A continuación creamos un reser básico, esto lo que hace es que se vea igual independientemente de en que navegador estes abriendo la página, 
+es decir, borra los estilos predeterminados de los navegadores */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Encabezados */
+
+header {  
+    background-color: var(--color-fondo2);
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    border-bottom: 4px solid var(--color-acentuados);
+
+}
+
+header h1 {  
+    
+     font-size: 40px;
+     font-weight: bold;
+     margin-top: 0px;
+     color: var(--color-texto); 
+
+}
+
+header p {
+    font-size: 20px;
+}
+
+/*Ahora creamos el estilo del cuerpo, sin especializarse en si es nav o main o article...*/
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-fondo1);
+    color: var(--color-texto);
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.6;
+    text-align: center; 
+
+}
+
+/* Nav */  
+
+nav {
+    font-size: 20px;
+}
+
+.buscador a {
+    margin-right: 20px; 
+}
+
+.buscador a:last-child {
+    margin-right: 0;
+}
+
+
+/* Mains */
+
+main {
+    padding: 0px;
+    margin: 0px;
+    background-color: var(--color-fondo1);
+    border-top: 4px solid var(--color-acentuados);
+    text-align: center; /* Centra el contenido del main */
+}
+
+main h2 {
+    color: var(--color-acentuados);
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+main h3 {
+    color: var(--color-acentuados);
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+main p {
+    font-size: 19.5px;
+    margin-bottom: 5px;
+    color: var(--color-acentuados);
+}
+main blockquote {
+    font-size: 19.5px;
+    margin-bottom: 5px;
+    color: var(--color-acentuados);
+}
+
+main figure {
+    margin-bottom: 15px;
+}
+
+
+main ul {
+    display:flex;
+    list-style: none; /* Eliminar viñetas */
+    padding: 0;
+    margin: 0; 
+    justify-content: center; 
+}
+main ul li {
+    margin: 5px;  
+}
+
+.abc ul  {
+    display:flex;
+    list-style: none; /* Eliminar viñetas */
+    padding: 0;
+    margin: 0; 
+    justify-content: center; 
+}
+
+.abc ul li {
+    flex: 1 1 auto; 
+    margin: 0px;
+}
+
+/* Links */
+a {
+    color: var(--color-acentuados);
+    text-decoration: none;
+    font-size: 19.5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* Estilo de bordes, márgenes y padding */
+section {
+    margin: 20px;
+    padding: 10px;
+    background-color: var(--color-fondo2);
+    border-radius: 6px;
+    border: 2px solid var(--color-borde);
+    text-align: center; /* Asegura que el texto dentro de section esté centrado */
+}
+section h3 {
+    color: var(--color-fondo1);
+    font-size: 32px;
+    margin-bottom: 5px;
+    
+}
+ 
+section p {
+    font-size: 19.5px;
+    margin-bottom: 5px;
+    color: var(--color-fondo1);
+}
+section a {
+    color: var(--color);
+    text-decoration: none;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+section a:hover {
+    text-decoration: underline;
+}
+
+.sectionA {
+    font-size: 19.5px;
+    margin-bottom: 5px;
+    color: var(--color-fondo1);
+}
+
+.accesiblep {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.accesiblep strong {
+    font-size: 23px;
+}
+/* Footer */
+footer {
+    padding: 20px;
+    background-color: var(--color-fondo1);
+    color: var(--color-acentuados);
+    text-align: center;
+    border-top: 4px solid var(--color-acentuados);
+}
+footer a {
+    font-size: 16.5px;
+}
+
+/* Tablas */
+table {
+    color: var(--color-acentuados); 
+    background-color:var(--color-fondo1); 
+    border-collapse: collapse; 
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto;
+    padding:0px;
+    margin-bottom: 20px;
+   
+}
+
+table th {
+    background-color: var(--color-acentuados); 
+    color: var(--color-fondo1); 
+    border: 1px solid var(--color-fondo1); 
+    text-align: center;
+    padding: 10px;
+}
+
+table td {
+    background-color:var(--color-fondo2); 
+    color: var(--color-texto); 
+    border: 1px solid var(--color-fondo1); 
+    text-align: center;
+    padding: 8px;
+}
+/* Clases definidas */
+
+.ObligatorioContacto{
+    margin-bottom: 10px;
+}
+
+.error {
+    color: var(--color-acentuados);  
+}
+
+.salto-contenido {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-acentuados); 
+    color: var(--color-texto); 
+    padding: 10px;
+    border-radius: 4px;
+    transform: translateY(-100%); 
+}
+
+.salto-contenido:focus {
+    transform: translateY(0); 
+}
+
+/* Formularios */
+
+form {
+    background-color: var(--color-fondo2);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--color-borde);
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-texto);
+    gap: 30px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: var(--color-texto);
+    margin-bottom: 5px;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--color-borde);
+    border-radius: 5px;
+    background-color: var(--color-fondo1);
+    color: var(--color-negro);
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: var(--color-acentuados);
+    color: var(--color-texto);
+    border: 2px solid var(--color-fondo1);
+    padding: 10px 20px;
+    font-size: 19px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+/* Estilos para centrar el label y el radio y checkbox group */
+.radio-group {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 10px;
+}
+
+
+.radio-group input[type="radio"],input[type="checkbox"] {
+    margin-right: 15px; 
+    margin-bottom: 5px;
+    text-align: center; 
+}
+
+.radio-group label {
+    display: inline-block;
+    text-align: center; 
+    padding-right: 30px;
+}
