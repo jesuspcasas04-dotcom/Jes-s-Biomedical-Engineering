@@ -1,0 +1,49 @@
+Pedro Garcia
+operacion
+2023-09-21
+300.75
+
+Pedro Garcia
+habitacion
+2023-09-25
+200.75
+
+Gloria Martinez
+radiografia
+2023-04-18
+550.15
+
+Gloria Martinez
+ecografia
+2023-09-21
+440.75
+
+Gloria Martinez
+analitica
+2023-03-14
+125.75
+
+Pedro Garcia
+anestesia
+2023-09-21
+500.00
+
+Gloria Martinez
+radiografia
+2023-04-18
+550.15
+
+Gloria Martinez
+ecografia
+2023-09-21
+440.75
+
+Gloria Martinez
+densitometria
+2023-03-14
+125.75
+
+Gloria Martinez
+analitica
+2023-03-14
+175.75f
