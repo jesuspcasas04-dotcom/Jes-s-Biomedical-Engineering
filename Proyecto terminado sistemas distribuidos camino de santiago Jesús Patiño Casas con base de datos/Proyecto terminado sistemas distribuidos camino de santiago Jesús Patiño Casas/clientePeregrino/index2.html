@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Proyecto Sistemas Distribuidos Jesús Patiño Casas</title>
+    
+    <style>
+      .seccion {
+          display: none;
+      }
+
+      .activa {
+          display: block;
+      }
+  </style>  
+  </head>
+
+  <body>
+
+    <h1>Aplicación peregrino</h1>
+
+
+
+    <div id="acceso" class="seccion activa">
+      <h2>Acceso</h2>
+
+      <label for="codigo">Cód. Acceso:</label>
+      <input type="text" id="codigo" name="codigo">
+
+      <br>
+
+      <button onclick="cambiarSeccionLogin('inicio')">Entrar</button>
+      <button onclick="cambiarSeccion('registro')">Registrarse</button>
+
+    </div>
+
+    <div id="registro" class="seccion">
+        <h2>DATOS PEREGRINO</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required>
+
+        <br>
+
+        <label for="fecha_nacimiento">F. nacimiento</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+
+        <br>
+
+        <label for="genero">Género: </label>
+        <select id="genero" name="genero">
+            <option value="H">Hombre</option>
+            <option value="M">Mujer</option>
+        </select>
+
+        <br>
+
+        <label for="altura"> Altura: </label>
+        <input type="number" id="altura" name="altura" required>
+
+        <br>
+
+        <label for="peso"> Peso: </label>
+        <input type="number" id="peso" name="peso" required>
+
+        <br>
+
+        <label for="codigoReg"> Cód. Acceso: </label>
+        <input type="password" id="codigoReg" name="codigo" required>
+
+        <br>
+
+        <button id="guardar" onclick="registrarPeregrino()">Guardar</button>
+        <button onclick="cambiarSeccion('acceso')">Cancelar</button>
+        
+    </div>
+
+    <div id="inicio" class="seccion">
+        <p>Bienvenido <span id="nombrePeregrino"></span></p>
+        <button onclick="irARegistro()">Editar datos</button>
+    
+        <br><br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Ruta</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="viajesActivos">
+                <!-- Los viajes se insertarán dinámicamente aquí -->
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <h3>Avisos</h3>
+        <table border="1">
+            <thead><tr><th>Fecha</th><th>Texto</th></tr></thead>
+            <tbody id="avisosPeregrino"></tbody>
+        </table>
+
+
+        <button onclick="cambiarSeccion('nuevoViaje')" >Añadir Viaje</button>
+        <button onclick="cambiarSeccion('acceso')">Salir</button> 
+    </div>
+    
+    <div id="viaje" class="seccion">
+        <h2>Viaje</h2>
+    
+        <h3>Datos viaje</h3>
+        <p>
+            Ruta: <strong><span id="rutaViaje"></span></strong><br>
+            Fecha inicio: <strong><span id="fechaInicio"></span></strong><br>
+            Fecha fin: <strong><span id="fechaFin"></span></strong> <button id="btnFinalizarViaje" onclick="finalizarViajeM()">Finalizar viaje</button>
+
+        </p>
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Km</th>
+                    <th>Dif.</th>
+                    <th>Desn.</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Dur.</th>
+                </tr>
+            </thead>
+            <tbody id="tablaEtapas">
+                <!-- Etapas del viaje se insertarán dinámicamente aquí -->
+            </tbody>
+        </table>
+    
+        <h3>Mensajes</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Etapa</th>
+                    <th>Sanitario</th>
+                    <th>Texto</th>
+                    <th></tr>
+                </tr>
+            </thead>
+            <tbody id="tablaMensajes">
+                <!-- Mensajes se insertarán dinámicamente aquí -->
+            </tbody>
+        </table>
+    
+        <button onclick="añadirMensaje()">Añadir mensaje</button>
+        <br><br>
+        <button onclick="volverAViajes()">Volver al listado</button>
+    </div>
+
+    <div id="MensajeNuevo" class="seccion">
+        <h2>MENSAJE NUEVO</h2>
+  
+        <div>
+          <label for="etapa">Etapa:</label>
+          <select id="etapa"></select>        
+        </div>
+        <div>
+          <label for="texto">Texto:</label>
+          <textarea id="texto"></textarea>
+        </div>
+        
+        <button onclick="guardarMensaje()">Guardar</button>
+        <button onclick="cambiarSeccion('viaje')">Cancelar</button>
+      </div>
+
+      
+    <div id="nuevoViaje" class="seccion">
+        <h2>Viaje nuevo</h2>
+    
+        <label for="ruta">Ruta:</label>
+        <select id="ruta" onchange="cargarEtapas()">
+            <!-- Opciones de rutas se cargarán dinámicamente -->
+        </select>
+    
+        <br><br>
+    
+        <label for="etapaOrigen">Etapa origen:</label>
+        <select id="etapaOrigen" onchange="cargarEtapas()">
+            <!-- Opciones de etapas de inicio se cargarán dinámicamente -->
+        </select>
+    
+        <br><br>
+    
+        <label for="etapaDestino">Etapa destino:</label>
+        <select id="etapaDestino" onchange="cargarEtapas()">
+            <!-- Opciones de etapas de destino se cargarán dinámicamente -->
+        </select>
+    
+        <br><br>
+    
+        <label for="fechaInicioNV">Fecha inicio:</label>
+        <input type="date" id="fechaInicioNV">
+    
+        <br><br>
+    
+        <button onclick="guardarViaje()">Guardar</button>
+        <button onclick="cambiarSeccion('inicio')">Cancelar </button>
+    </div>
+    
+    
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="rest.js"></script>
+    <script src="rpc.js"></script>
+    <script src="mainPeregrino.js"></script>
+  </body>
+
+</html>

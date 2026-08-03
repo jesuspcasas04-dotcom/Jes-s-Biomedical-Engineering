@@ -1,0 +1,135 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Encabezado */
+h1 {
+    color: #2c3e50;
+}
+
+/* Secciones */
+.seccion {
+    display: none;
+    background: white;
+    padding: 30px; /* Un poco más de espacio */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px; /* 🔹 Aumentamos el ancho */
+    margin: auto;
+    text-align: left; /* 🔹 Para que el texto no quede centrado */
+}
+
+.activa {
+    display: block;
+}
+
+/* Formularios */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Botones */
+button {
+    background: #3498db;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #e8f6ff;
+}
+
+/* Mensajes */
+#Mensajes table {
+    margin-top: 15px;
+}
+
+#Mensajes th {
+    background-color: #16a085;
+}
+
+#Mensajes tr:hover {
+    background-color: #d1f2eb;
+}
+
+/* 🔴 Mensajes de los peregrinos */
+.mensaje-peregrino {
+    background-color: #ffcccc !important; /* Rojo claro */
+    color: #900; /* Rojo oscuro para el texto */
+}
+
+/* 🔵 Mensajes de otros sanitarios */
+.mensaje-otro {
+    background-color: #cce5ff !important; /* Azul claro */
+    color: #004085; /* Azul oscuro */
+}
+
+/* 🟢 Mensajes del usuario actual */
+.mensaje-propio {
+    background-color: #d4edda !important; /* Verde claro */
+    color: #155724; /* Verde oscuro */
+    font-weight: bold; /* Resaltar mi propio mensaje */
+}
+
+/* Ajuste para botones dentro de los mensajes propios */
+.mensaje-propio button {
+    background-color: #e74c3c; /* Rojo para botón de eliminar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mensaje-propio button:hover {
+    background-color: #c0392b; /* Rojo más oscuro */
+}
